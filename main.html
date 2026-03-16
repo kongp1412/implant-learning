@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ยาฝังคุมกำเนิด (Contraceptive Implant) | ข้อมูลฉบับสมบูรณ์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9', // Sky 500
+                        primaryDark: '#0284c7', // Sky 600
+                        secondary: '#f0f9ff', // Sky 50
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for FAQ accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* Arbitrary large max-height */
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-slate-50 antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fa-solid fa-notes-medical text-primary text-2xl mr-2"></i>
+                    <span class="font-bold text-xl text-gray-900">สาระแน</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-primary transition font-medium">หน้าแรก</a>
+                    <a href="#what-is-it" class="text-gray-600 hover:text-primary transition font-medium">ข้อมูลทั่วไป</a>
+                    <a href="#types" class="text-gray-600 hover:text-primary transition font-medium">ชนิดและขั้นตอน</a>
+                    <a href="#care" class="text-gray-600 hover:text-primary transition font-medium">การดูแลรักษา</a>
+                    <a href="#pros-cons" class="text-gray-600 hover:text-primary transition font-medium">ข้อดี-ข้อเสีย</a>
+                    <a href="#faq" class="text-gray-600 hover:text-primary transition font-medium">FAQ</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-secondary rounded-md font-medium mobile-link">หน้าแรก</a>
+                <a href="#what-is-it" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-secondary rounded-md font-medium mobile-link">ข้อมูลทั่วไป</a>
+                <a href="#types" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-secondary rounded-md font-medium mobile-link">ชนิดและขั้นตอน</a>
+                <a href="#care" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-secondary rounded-md font-medium mobile-link">การดูแลรักษา</a>
+                <a href="#pros-cons" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-secondary rounded-md font-medium mobile-link">ข้อดี-ข้อเสีย</a>
+                <a href="#faq" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-secondary rounded-md font-medium mobile-link">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-br from-secondary to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 space-y-6">
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary font-semibold text-sm">คู่มือสุขภาพสตรี ฉบับสมบูรณ์</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        ยาฝังคุมกำเนิด <br>
+                        <span class="text-primary">ทางเลือกที่มั่นใจ ปลอดภัยระยะยาว</span>
+                    </h1>
+                    <p class="text-lg text-gray-600">
+                        เจาะลึกทุกรายละเอียดของ "ยาฝังคุมกำเนิด" (Contraceptive Implant) นวัตกรรมการคุมกำเนิดที่มีประสิทธิภาพสูงสุด สะดวก ไม่ต้องกลัวลืมกินยา เพื่อการวางแผนครอบครัวที่แม่นยำและตอบโจทย์ไลฟ์สไตล์ผู้หญิงยุคใหม่
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#what-is-it" class="bg-primary hover:bg-primaryDark text-white px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-primary/30">
+                            ทำความรู้จักยาฝัง
+                        </a>
+                        <a href="#care" class="bg-white border-2 border-primary text-primary hover:bg-secondary px-6 py-3 rounded-lg font-medium transition">
+                            การเตรียมตัวก่อนฝัง
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative w-full">
+                    <div class="absolute inset-0 bg-primary/10 rounded-full blur-3xl transform -skew-y-12"></div>
+                    <div class="relative z-10 flex flex-col gap-3">
+                        
+                        <!-- Video Player Section Updated for Autoplay -->
+                        <div class="rounded-2xl shadow-2xl border-4 border-white overflow-hidden aspect-video w-full bg-slate-800 relative group">
+                            <video 
+                                src="ไขข้อสงสัยก่อนใช้ยาฝังคุมกำเนิด _ โรงพยาบาลธนบุรี.mp4" 
+                                class="w-full h-full object-cover"
+                                autoplay 
+                                muted 
+                                loop 
+                                playsinline
+                                controls
+                            >
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="https://www.youtube.com/watch?v=gbOhpOQo1Es" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                                <i class="fa-brands fa-youtube text-red-500 text-lg"></i>
+                                <span>ขอขอบคุณช่อง Thonburi Hospital Channel</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is it & How it works -->
+    <section id="what-is-it" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ยาฝังคุมกำเนิด คืออะไร?</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 text-lg">
+                    ทำความเข้าใจลักษณะทางกายภาพและกลไกการทำงานของยาฝังคุมกำเนิด ที่ปกป้องคุณจากการตั้งครรภ์ได้อย่างมีประสิทธิภาพตลอด 24 ชั่วโมง
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center mb-16">
+                <div class="md:w-1/2 w-full">
+                    <!-- Image -->
+                    <div class="w-full aspect-[4/3] bg-slate-100 rounded-2xl shadow-inner overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+                <div class="md:w-1/2 space-y-6">
+                    <h3 class="text-2xl font-bold text-gray-900">ลักษณะของยาฝังคุมกำเนิด</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        ยาฝังคุมกำเนิด (Contraceptive Implant) เป็นแท่งพลาสติกยืดหยุ่นขนาดเล็กมาก มีขนาดความยาวประมาณ 4 เซนติเมตร และเส้นผ่านศูนย์กลางเพียง 2 มิลลิเมตร (ขนาดใกล้เคียงกับก้านไม้ขีดไฟ) 
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        ภายในหลอดพลาสติกนี้จะบรรจุ <strong>ฮอร์โมนโปรเจสติน (Progestin)</strong> สังเคราะห์ ซึ่งแพทย์จะทำการฝังเข้าไปที่บริเวณใต้ผิวหนังบริเวณท้องแขนด้านใน (มักเลือกแขนข้างที่ไม่ถนัดเพื่อไม่ให้รบกวนการใช้ชีวิตประจำวัน) ตัวยาจะค่อยๆ ปล่อยฮอร์โมนเข้าสู่กระแสเลือดในปริมาณที่สม่ำเสมอทุกวัน
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                        <p class="text-sm text-blue-800 font-medium">เกร็ดความรู้: ยาฝังคุมกำเนิดถือเป็นวิธีคุมกำเนิดแบบ "Long-Acting Reversible Contraception (LARC)" คือออกฤทธิ์ยาวนานและสามารถกลับมาตั้งครรภ์ได้เมื่อหยุดใช้</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-10">กลไกการทำงานหลัก 3 ประการ</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-secondary/50 p-8 rounded-2xl text-center hover:shadow-lg transition">
+                    <div class="w-full h-40 bg-slate-200 rounded-lg overflow-hidden mb-6 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl">1</div>
+                    <h4 class="text-xl font-bold mb-3 text-gray-900">ยับยั้งการตกไข่</h4>
+                    <p class="text-gray-600 text-sm">ฮอร์โมนจะไปกดการทำงานของต่อมใต้สมองและรังไข่ ทำให้ไม่มีไข่สุกและหลุดออกมาในแต่ละรอบเดือน ซึ่งเป็นกลไกสำคัญที่สุดในการป้องกันการตั้งครรภ์</p>
+                </div>
+                <div class="bg-secondary/50 p-8 rounded-2xl text-center hover:shadow-lg transition">
+                    <div class="w-full h-40 bg-slate-200 rounded-lg overflow-hidden mb-6 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl">2</div>
+                    <h4 class="text-xl font-bold mb-3 text-gray-900">มูกปากมดลูกข้นเหนียว</h4>
+                    <p class="text-gray-600 text-sm">ฮอร์โมนทำให้มูกบริเวณปากมดลูกมีความข้นและเหนียวมากขึ้นอย่างมาก ส่งผลให้ตัวอสุจิไม่สามารถว่ายผ่านเข้าไปผสมกับไข่ในท่อนำไข่ได้</p>
+                </div>
+                <div class="bg-secondary/50 p-8 rounded-2xl text-center hover:shadow-lg transition">
+                    <div class="w-full h-40 bg-slate-200 rounded-lg overflow-hidden mb-6 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl">3</div>
+                    <h4 class="text-xl font-bold mb-3 text-gray-900">เยื่อบุมดลูกบางตัว</h4>
+                    <p class="text-gray-600 text-sm">ทำให้เยื่อบุโพรงมดลูกอยู่ในสภาพที่บางและไม่สมบูรณ์ จึงไม่เหมาะสมต่อการฝังตัวของตัวอ่อน (ในกรณีที่เกิดการผสมของไข่และอสุจิหลุดรอดไปได้)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types and Process -->
+    <section id="types" class="py-16 md:py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                
+                <!-- Types -->
+                <div class="sticky top-24">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">ชนิดของยาฝังคุมกำเนิด</h2>
+                    <p class="text-gray-600 mb-8">ในประเทศไทยปัจจุบันมีให้บริการหลักๆ 2 ชนิด ซึ่งแตกต่างกันที่จำนวนหลอดยา ระยะเวลาในการคุมกำเนิด และชนิดของฮอร์โมนเล็กน้อย</p>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-full h-48 bg-slate-100 rounded-lg overflow-hidden mb-4">
+                                <img src="https://images.unsplash.com/photo-1584308666744-24d5e478ebd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-blue-100 p-3 rounded-lg text-primary shrink-0">
+                                    <i class="fa-solid fa-1 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">แบบ 1 หลอด (1-Rod Implant)</h4>
+                                    <ul class="text-gray-600 mt-3 space-y-2 text-sm list-disc list-inside">
+                                        <li><strong>ระยะเวลา:</strong> คุมกำเนิดได้นาน <strong>3 ปี</strong></li>
+                                        <li><strong>ตัวยา:</strong> Etonogestrel 68 mg</li>
+                                        <li><strong>ความนิยม:</strong> นิยมใช้มากที่สุดในปัจจุบัน เนื่องจากมีหลอดเดียว ทำให้กระบวนการฝังและถอดออกทำได้สะดวกรวดเร็ว รอยแผลมีขนาดเล็กมาก</li>
+                                        <li><strong>ตัวอย่างยี่ห้อ:</strong> Implanon, Implanon NXT</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-full h-48 bg-slate-100 rounded-lg overflow-hidden mb-4">
+                                <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-blue-100 p-3 rounded-lg text-primary shrink-0">
+                                    <i class="fa-solid fa-2 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900">แบบ 2 หลอด (2-Rod Implant)</h4>
+                                    <ul class="text-gray-600 mt-3 space-y-2 text-sm list-disc list-inside">
+                                        <li><strong>ระยะเวลา:</strong> คุมกำเนิดได้นานถึง <strong>5 ปี</strong></li>
+                                        <li><strong>ตัวยา:</strong> Levonorgestrel 75 mg ต่อหลอด (รวม 150 mg)</li>
+                                        <li><strong>ความเหมาะสม:</strong> เหมาะสำหรับผู้หญิงที่ต้องการเว้นระยะการมีบุตรนานๆ โดยไม่ต้องเจ็บตัวเปลี่ยนยาบ่อย แพทย์จะฝังเป็นรูปตัววี (V) กระจายตัวยา</li>
+                                        <li><strong>ตัวอย่างยี่ห้อ:</strong> Jadelle</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process (Timeline with Images) -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-user-doctor text-primary"></i> ขั้นตอนการฝังยาคุมกำเนิด
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-8">กระบวนการทั้งหมดใช้เวลาเพียง 10-15 นาที สามารถทำได้ที่ห้องตรวจผู้ป่วยนอก ไม่ต้องนอนโรงพยาบาล</p>
+                    
+                    <ul class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary/50 before:via-gray-200 before:to-transparent">
+                        
+                        <!-- Step 1 -->
+                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">1</div>
+                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                                <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
+                                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                </div>
+                                <h4 class="font-bold text-gray-900 text-lg">ปรึกษาและซักประวัติ</h4>
+                                <p class="text-sm text-gray-600 mt-2 leading-relaxed">แพทย์จะซักประวัติสุขภาพ ตรวจร่างกาย ประเมินความเสี่ยง ตรวจสอบวันที่มีประจำเดือน และให้คำแนะนำเกี่ยวกับผลข้างเคียงที่อาจเกิดขึ้น เพื่อดูว่าคุณเหมาะสมกับยาฝังหรือไม่</p>
+                            </div>
+                        </li>
+
+                        <!-- Step 2 -->
+                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">2</div>
+                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                                <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
+                                    <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                </div>
+                                <h4 class="font-bold text-gray-900 text-lg">ทำความสะอาดและฉีดยาชา</h4>
+                                <p class="text-sm text-gray-600 mt-2 leading-relaxed">พยาบาลจะทำความสะอาดฆ่าเชื้อบริเวณท้องแขนด้านใน (มักเป็นแขนข้างที่ไม่ถนัด เช่น แขนซ้าย) จากนั้นแพทย์จะฉีดยาชาเฉพาะที่ คุณจะรู้สึกเจ็บเล็กน้อยคล้ายมดกัดเฉพาะขั้นตอนนี้</p>
+                            </div>
+                        </li>
+
+                        <!-- Step 3 -->
+                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">3</div>
+                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                                <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
+                                    <img src="https://images.unsplash.com/photo-1581594693702-f5c51affd974?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                </div>
+                                <h4 class="font-bold text-gray-900 text-lg">ฝังหลอดยาคุมกำเนิด</h4>
+                                <p class="text-sm text-gray-600 mt-2 leading-relaxed">เมื่อยาชาออกฤทธิ์ แพทย์จะใช้เข็มนำทาง (Trocar) ซึ่งเป็นอุปกรณ์พิเศษสอดหลอดยาเข้าไปใต้ชั้นผิวหนังตื้นๆ ผู้รับบริการจะไม่รู้สึกเจ็บ แต่อาจรู้สึกตึงหรือหน่วงๆ ใช้เวลาขั้นตอนนี้เพียง 1-3 นาที</p>
+                            </div>
+                        </li>
+
+                        <!-- Step 4 -->
+                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">4</div>
+                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                                <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
+                                    <img src="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                </div>
+                                <h4 class="font-bold text-gray-900 text-lg">ปิดแผลและพันผ้าห้ามเลือด</h4>
+                                <p class="text-sm text-gray-600 mt-2 leading-relaxed">รอยเจาะจะมีขนาดเล็กมาก (ประมาณ 2 มม.) ไม่ต้องเย็บแผล แพทย์จะปิดพลาสเตอร์กันน้ำ และพันผ้าพันแผลชนิดยืด (Elastic Bandage) ทับอีกชั้นเพื่อห้ามเลือดและลดอาการบวมช้ำ</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Preparation & Aftercare -->
+    <section id="care" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">การเตรียมตัว และ การดูแลรักษา</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 text-lg">ข้อควรรู้เพื่อให้กระบวนการฝังยาเป็นไปอย่างราบรื่น และป้องกันการอักเสบติดเชื้อหลังการฝัง</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Before -->
+                <div class="bg-indigo-50/50 p-8 rounded-2xl border border-indigo-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-2xl font-bold text-indigo-900 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-clipboard-check text-indigo-500"></i> ก่อนเข้ารับการฝังยา
+                    </h3>
+                    <div class="w-full h-48 bg-indigo-100 rounded-lg overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-indigo-200 rounded-full w-6 h-6 flex items-center justify-center shrink-0"><span class="text-indigo-700 text-xs font-bold">1</span></div>
+                            <p class="text-gray-700"><strong>ช่วงเวลาที่เหมาะสมที่สุด:</strong> ควรไปฝังยาภายใน <strong>1-5 วันแรกของการมีประจำเดือน</strong> เพื่อให้มั่นใจว่าไม่ได้ตั้งครรภ์ และยาจะออกฤทธิ์คุมกำเนิดได้ทันทีในรอบเดือนนั้น</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-indigo-200 rounded-full w-6 h-6 flex items-center justify-center shrink-0"><span class="text-indigo-700 text-xs font-bold">2</span></div>
+                            <p class="text-gray-700"><strong>กรณีคลอดบุตร:</strong> สามารถฝังได้ทันทีหลังคลอดก่อนออกจากโรงพยาบาล หรือฝังในช่วง 4-6 สัปดาห์หลังคลอด</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-indigo-200 rounded-full w-6 h-6 flex items-center justify-center shrink-0"><span class="text-indigo-700 text-xs font-bold">3</span></div>
+                            <p class="text-gray-700"><strong>กรณีแท้งบุตร:</strong> สามารถทำการฝังยาคุมกำเนิดได้ทันที หรือภายใน 5 วันแรกหลังการแท้ง</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-indigo-200 rounded-full w-6 h-6 flex items-center justify-center shrink-0"><span class="text-indigo-700 text-xs font-bold">4</span></div>
+                            <p class="text-gray-700"><strong>การเตรียมร่างกาย:</strong> พักผ่อนให้เพียงพอ ทานอาหารตามปกติ อาบน้ำชำระร่างกายบริเวณแขนให้สะอาด และควรใส่เสื้อแขนสั้นหรือเสื้อที่ถอดง่าย</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- After -->
+                <div class="bg-teal-50/50 p-8 rounded-2xl border border-teal-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-2xl font-bold text-teal-900 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-hand-holding-medical text-teal-500"></i> การดูแลตัวเองหลังฝังยา
+                    </h3>
+                    <div class="w-full h-48 bg-teal-100 rounded-lg overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-teal-500 mt-1"></i>
+                            <p class="text-gray-700"><strong>เรื่องแผลและน้ำ:</strong> ห้ามให้แผลโดนน้ำเป็นเวลา <strong>24 - 48 ชั่วโมง</strong> หากอาบน้ำให้ระวังหรือใช้ถุงพลาสติกหุ้ม เมื่อครบกำหนดสามารถแกะพลาสเตอร์ออกได้</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-teal-500 mt-1"></i>
+                            <p class="text-gray-700"><strong>การใช้แขน:</strong> งดยกของหนัก หรือการออกกำลังกายที่ต้องเกร็งแขนข้างที่ฝังยาอย่างรุนแรง เป็นเวลาประมาณ 3-5 วัน เพื่อป้องกันแผลอักเสบ</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-teal-500 mt-1"></i>
+                            <p class="text-gray-700"><strong>รอยช้ำเป็นเรื่องปกติ:</strong> อาจมีอาการระบม บวมแดง หรือรอยฟกช้ำสีม่วง/เขียว รอบๆ บริเวณที่ฝังยา อาการเหล่านี้จะค่อยๆ หายไปเองใน 1-2 สัปดาห์ สามารถทานยาพาราเซตามอลบรรเทาปวดได้</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-teal-500 mt-1"></i>
+                            <p class="text-gray-700"><strong>ระยะเริ่มคุมกำเนิด:</strong> หากฝังภายใน 5 วันแรกของประจำเดือน ยาจะออกฤทธิ์ทันที แต่หากฝังช่วงอื่น <strong>ต้องใช้ถุงยางอนามัยควบคู่ไปด้วยในช่วง 7 วันแรก</strong></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pros & Cons -->
+    <section id="pros-cons" class="py-16 md:py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">เปรียบเทียบข้อดี และ ผลข้างเคียง</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Pros -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-green-100 p-2 rounded-full text-green-600">
+                            <i class="fa-solid fa-thumbs-up text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-800">ข้อดีที่โดดเด่น</h3>
+                    </div>
+                    
+                    <div class="w-full h-40 bg-slate-100 rounded-lg overflow-hidden mb-6 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                            <span class="text-gray-700"><strong>ประสิทธิภาพสูงที่สุด:</strong> มีอัตราล้มเหลว (Pearl Index) ต่ำกว่า 0.05% ถือว่ามีประสิทธิภาพสูงกว่ายาเม็ดคุมกำเนิด แผ่นแปะ และวงแหวนช่องคลอด</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                            <span class="text-gray-700"><strong>สะดวกสุดขีด ตัดปัญหาการลืม:</strong> ฝังเพียงครั้งเดียว คุมได้ยาวนาน 3-5 ปี ไม่ต้องตั้งนาฬิกาปลุกกินยาทุกวัน เหมาะกับคนขี้ลืม</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                            <span class="text-gray-700"><strong>ฟื้นฟูเจริญพันธุ์ได้รวดเร็ว:</strong> เมื่อถอดหลอดยาออก ฮอร์โมนจะหมดจากร่างกายในไม่กี่วัน และการตกไข่จะกลับมาเป็นปกติ สามารถตั้งครรภ์ได้ทันที</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                            <span class="text-gray-700"><strong>ทางเลือกสำหรับแม่ให้นมบุตร:</strong> ฮอร์โมนโปรเจสตินไม่มีผลกระทบต่อปริมาณและคุณภาพของน้ำนมแม่ (ต่างจากยาคุมชนิดฮอร์โมนรวม)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500 mt-1"></i>
+                            <span class="text-gray-700"><strong>ผลพลอยได้ทางสุขภาพ:</strong> ช่วยลดอาการปวดประจำเดือน (Dysmenorrhea) และอาจช่วยลดปริมาณเลือดประจำเดือน ทำให้ลดความเสี่ยงภาวะโลหิตจางได้ในบางราย</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cons -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-red-100 p-2 rounded-full text-red-600">
+                            <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-red-800">ผลข้างเคียง และข้อจำกัด</h3>
+                    </div>
+
+                    <div class="w-full h-40 bg-slate-100 rounded-lg overflow-hidden mb-6 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
+                            <span class="text-gray-700"><strong>ประจำเดือนมาไม่ปกติ (พบบ่อยที่สุด):</strong> ในช่วง 3-6 เดือนแรก ประจำเดือนอาจมากะปริบกะปรอย มาไม่ตรงรอบ หรือในผู้หญิงบางคนประจำเดือนอาจขาดหายไปเลย (Amenorrhea) ซึ่งแพทย์ระบุว่าไม่อันตราย</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
+                            <span class="text-gray-700"><strong>การเปลี่ยนแปลงของน้ำหนัก:</strong> ผู้ใช้บางรายรายงานว่ามีน้ำหนักตัวเพิ่มขึ้นเล็กน้อย (มักไม่เกิน 1-2 กก.) หรือรู้สึกบวมน้ำ คัดตึงเต้านม</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
+                            <span class="text-gray-700"><strong>อาการทางผิวหนังและอารมณ์:</strong> อาจพบสิวขึ้นมากกว่าปกติ, ปวดศีรษะ, อารมณ์แปรปรวน หรือความต้องการทางเพศลดลงในบางราย</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
+                            <span class="text-gray-700"><strong>ไม่ป้องกันโรคติดต่อ:</strong> ยาฝังป้องกันได้แค่การตั้งครรภ์ ไม่สามารถป้องกันโรคติดต่อทางเพศสัมพันธ์ (HIV, หนองใน ฯลฯ) ยังคงต้องใช้ถุงยางอนามัยร่วมด้วย</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
+                            <span class="text-gray-700"><strong>ต้องการแพทย์ผู้เชี่ยวชาญ:</strong> ต้องให้แพทย์ที่ผ่านการอบรมเป็นผู้เจาะฝังและถอดออกให้เท่านั้น ไม่สามารถทำได้ด้วยตัวเอง</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Caution notices -->
+            <div class="grid md:grid-cols-2 gap-6 mt-10">
+                <div class="bg-orange-50 border-l-4 border-orange-500 p-5 rounded-r-lg shadow-sm">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fa-solid fa-ban text-orange-500 mt-0.5 text-lg"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-base font-bold text-orange-900">ใคร "ไม่ควร" ฝังยาคุมกำเนิด?</h3>
+                            <ul class="mt-2 text-sm text-orange-800 list-disc list-inside space-y-1">
+                                <li>สงสัยว่ากำลังตั้งครรภ์</li>
+                                <li>มีเลือดออกผิดปกติทางช่องคลอดโดยไม่ทราบสาเหตุ</li>
+                                <li>มีประวัติเป็นมะเร็งเต้านม หรือเนื้องอกที่ตับ</li>
+                                <li>เป็นโรคตับอักเสบเฉียบพลันหรือตับแข็งรุนแรง</li>
+                                <li>มีภาวะลิ่มเลือดอุดตันรุนแรง</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 border-l-4 border-red-500 p-5 rounded-r-lg shadow-sm">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fa-solid fa-bell text-red-500 mt-0.5 text-lg"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-base font-bold text-red-900">อาการผิดปกติที่ต้องรีบไปพบแพทย์</h3>
+                            <ul class="mt-2 text-sm text-red-800 list-disc list-inside space-y-1">
+                                <li>ปวด บวม แดงร้อน หรือมีหนองไหลบริเวณรอยฝังยา</li>
+                                <li>คลำหาหลอดยาไม่พบ หรือหลอดยาโผล่ทะลุผิวหนังออกมา</li>
+                                <li>มีเลือดออกทางช่องคลอดปริมาณมาก (ต้องเปลี่ยนผ้าอนามัยทุกชั่วโมง)</li>
+                                <li>ปวดท้องน้อยอย่างรุนแรง (อาจเสี่ยงท้องนอกมดลูก)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">คำถามที่พบบ่อย (FAQ)</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                <p class="text-gray-500 mt-4">รวมข้อสงสัยที่สาวๆ มักถามก่อนตัดสินใจฝังยาคุมกำเนิด</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                        <span>1. ตอนฝังยาและถอดออก เจ็บไหม?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600 flex flex-col md:flex-row gap-4 items-center">
+                            <div class="w-full md:w-1/4 h-24 bg-slate-100 rounded shrink-0 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="[Image of เข็มฉีดยา]" class="w-full h-full object-cover">
+                            </div>
+                            <p class="text-sm md:text-base leading-relaxed">
+                                <strong>ตอนฝัง:</strong> เจ็บเพียงเล็กน้อยเฉพาะตอนที่แพทย์ฉีดยาชา (คล้ายมดกัด) หลังจากยาชาออกฤทธิ์แล้ว ระหว่างขั้นตอนการใช้เข็มสอดหลอดยาจะไม่รู้สึกเจ็บเลย อาจจะรู้สึกแค่ตึงๆ หรือแรงกดเบาๆ ครับ <br>
+                                <strong>ตอนถอด:</strong> แพทย์จะฉีดยาชาเช่นเดียวกัน จากนั้นจะกรีดแผลเล็กๆ (ประมาณ 2 มม.) ที่ปลายหลอดยาแล้วคีบดึงออก จะไม่รู้สึกเจ็บแต่อาจรู้สึกตึงๆ เช่นกัน
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                        <span>2. หลอดยาฝังจะเคลื่อนที่ไปที่อวัยวะอื่น หรือหักในแขนได้ไหม?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600">
+                            <p class="text-sm md:text-base leading-relaxed">
+                                <strong>โอกาสเกิดน้อยมากๆ ครับ</strong> หลอดยาถูกออกแบบมาให้มีความยืดหยุ่นสูง โอกาสหักจึงยากมาก และแพทย์จะฝังไว้ใต้ชั้นผิวหนังตื้นๆ (Subdermal) ซึ่งเนื้อเยื่อรอบๆ จะสร้างพังผืดบางๆ มาหุ้มหลอดยาไว้ ทำให้มันอยู่กับที่ ไม่เคลื่อนที่ทะลุหลอดเลือดหรือไหลไปที่อวัยวะอื่น คุณสามารถใช้นิ้วคลำเจอหลอดยาใต้ผิวหนังได้ตลอดเวลาเพื่อเช็คตำแหน่ง
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                        <span>3. ไม่มีประจำเดือนเลย เลือดเสียจะสะสมหรือเป็นอันตรายไหม?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600 flex flex-col md:flex-row gap-4 items-center">
+                            <div class="w-full md:w-1/4 h-24 bg-slate-100 rounded shrink-0 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <p class="text-sm md:text-base leading-relaxed">
+                                <strong>ไม่อันตราย และไม่มีเลือดเสียสะสมครับ!</strong> นี่เป็นความเข้าใจผิดที่พบบ่อย กลไกของยาฝังคุมกำเนิดจะทำให้เยื่อบุโพรงมดลูก "ไม่หนาตัวขึ้น" ตั้งแต่แรก เมื่อเยื่อบุไม่หนาตัว จึงไม่มีการหลุดลอกออกมาเป็นประจำเดือนครับ มดลูกของคุณจะสะอาดปกติ ไม่ได้มีเลือดไปอั้นหรือคั่งอยู่ข้างในแต่อย่างใด ถือเป็นผลดีสำหรับคนที่มีภาวะโลหิตจางด้วยครับ
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                        <span>4. ฝังยาคุมกำเนิดทำให้อ้วนขึ้นจริงไหม?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600">
+                            <p class="text-sm md:text-base leading-relaxed">
+                                จากการศึกษาพบว่า ฮอร์โมนในยาฝัง <strong>ไม่ได้ทำให้อ้วนขึ้นโดยตรง</strong> แต่อาจทำให้เกิดภาวะบวมน้ำเล็กน้อยในบางคน หรืออาจทำให้รู้สึกเจริญอาหารมากขึ้น ซึ่งหากควบคุมพฤติกรรมการทานอาหารและออกกำลังกายตามปกติ น้ำหนักตัวก็จะไม่เพิ่มขึ้นครับ (โดยเฉลี่ยแล้วน้ำหนักอาจขึ้นประมาณ 1-2 กิโลกรัมในปีแรกในผู้หญิงบางกลุ่มเท่านั้น)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                        <span>5. สิทธิฝังยาคุมกำเนิดฟรี มีข้อกำหนดอย่างไรบ้าง?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600 flex flex-col md:flex-row gap-4 items-center">
+                            <div class="w-full md:w-1/4 h-24 bg-slate-100 rounded shrink-0 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <p class="text-sm md:text-base leading-relaxed">
+                                ในประเทศไทยภายใต้สิทธิหลักประกันสุขภาพแห่งชาติ (สปสช.):<br>
+                                1. <strong>วัยรุ่นหญิงอายุ 10 - 20 ปีบริบูรณ์</strong> สามารถเข้ารับบริการฝังยาคุมกำเนิด (หรือใส่ห่วงอนามัย) ได้ <strong>ฟรี! ทุกสิทธิการรักษา</strong> ที่สถานพยาบาลของรัฐและเอกชนที่เข้าร่วมโครงการ<br>
+                                2. <strong>สตรีอายุ 20 ปีขึ้นไป</strong> หากอยู่ในภาวะหลังยุติการตั้งครรภ์ (แท้ง) ก็สามารถรับบริการฟรีได้เช่นกัน<br>
+                                *แนะนำให้โทรสอบถามโรงพยาบาลใกล้บ้าน หรือโทรสายด่วน สปสช. 1330 เพื่อเช็คสิทธิล่วงหน้าครับ
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-notes-medical text-primary text-3xl mr-3"></i>
+                    <div>
+                        <span class="font-bold text-2xl tracking-wide">สาระแน</span>
+                        <p class="text-gray-400 text-sm mt-1">แหล่งรวมความรู้เรื่องยาฝังคุมกำเนิด</p>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400 text-sm max-w-md">
+                        <strong>ข้อสงวนสิทธิ์:</strong> ข้อมูลบนเว็บไซต์นี้มีวัตถุประสงค์เพื่อให้ความรู้เบื้องต้นเท่านั้น ไม่สามารถทดแทนคำปรึกษา การวินิจฉัย หรือการรักษาจากแพทย์ผู้เชี่ยวชาญได้ โปรดปรึกษาแพทย์ก่อนตัดสินใจเลือกวิธีคุมกำเนิด
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2026 สาระแน. All rights reserved. Designed for educational purposes.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for interactive elements -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const button = item.querySelector('button');
+            button.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Sticky Navbar styling on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
