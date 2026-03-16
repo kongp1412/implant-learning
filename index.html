@@ -33,14 +33,14 @@
             transition: max-height 0.3s ease-out;
         }
         .faq-item.active .faq-answer {
-            max-height: 500px; /* Arbitrary large max-height */
+            max-height: 500px;
         }
         .faq-item.active .faq-icon {
             transform: rotate(180deg);
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-slate-50 antialiased selection:bg-primary selection:text-white">
+<body class="font-sans text-gray-800 bg-slate-50 antialiased selection:bg-primary selection:text-white overflow-x-hidden">
 
     <!-- Navigation -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
@@ -89,7 +89,7 @@
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2 space-y-6">
                     <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary font-semibold text-sm">คู่มือสุขภาพสตรี ฉบับสมบูรณ์</span>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                         ยาฝังคุมกำเนิด <br>
                         <span class="text-primary">ทางเลือกที่มั่นใจ ปลอดภัยระยะยาว</span>
                     </h1>
@@ -97,10 +97,10 @@
                         เจาะลึกทุกรายละเอียดของ "ยาฝังคุมกำเนิด" (Contraceptive Implant) นวัตกรรมการคุมกำเนิดที่มีประสิทธิภาพสูงสุด สะดวก ไม่ต้องกลัวลืมกินยา เพื่อการวางแผนครอบครัวที่แม่นยำและตอบโจทย์ไลฟ์สไตล์ผู้หญิงยุคใหม่
                     </p>
                     <div class="pt-4 flex flex-wrap gap-4">
-                        <a href="#what-is-it" class="bg-primary hover:bg-primaryDark text-white px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-primary/30">
+                        <a href="#what-is-it" class="bg-primary hover:bg-primaryDark text-white px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-primary/30 text-center flex-1 sm:flex-none">
                             ทำความรู้จักยาฝัง
                         </a>
-                        <a href="#care" class="bg-white border-2 border-primary text-primary hover:bg-secondary px-6 py-3 rounded-lg font-medium transition">
+                        <a href="#care" class="bg-white border-2 border-primary text-primary hover:bg-secondary px-6 py-3 rounded-lg font-medium transition text-center flex-1 sm:flex-none">
                             การเตรียมตัวก่อนฝัง
                         </a>
                     </div>
@@ -147,14 +147,14 @@
                 </p>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-12 items-center mb-16">
-                <div class="md:w-1/2 w-full">
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center mb-16">
+                <div class="w-full md:w-1/2">
                     <!-- Image -->
                     <div class="w-full aspect-[4/3] bg-slate-100 rounded-2xl shadow-inner overflow-hidden relative group">
-                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ลักษณะยาฝังคุมกำเนิด" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
                 </div>
-                <div class="md:w-1/2 space-y-6">
+                <div class="w-full md:w-1/2 space-y-6">
                     <h3 class="text-2xl font-bold text-gray-900">ลักษณะของยาฝังคุมกำเนิด</h3>
                     <p class="text-gray-600 leading-relaxed">
                         ยาฝังคุมกำเนิด (Contraceptive Implant) เป็นแท่งพลาสติกยืดหยุ่นขนาดเล็กมาก มีขนาดความยาวประมาณ 4 เซนติเมตร และเส้นผ่านศูนย์กลางเพียง 2 มิลลิเมตร (ขนาดใกล้เคียงกับก้านไม้ขีดไฟ) 
@@ -169,28 +169,28 @@
             </div>
 
             <h3 class="text-2xl font-bold text-gray-900 text-center mb-10">กลไกการทำงานหลัก 3 ประการ</h3>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div class="bg-secondary/50 p-8 rounded-2xl text-center hover:shadow-lg transition">
                     <div class="w-full h-40 bg-slate-200 rounded-lg overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="ยับยั้งการตกไข่" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl">1</div>
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl font-bold">1</div>
                     <h4 class="text-xl font-bold mb-3 text-gray-900">ยับยั้งการตกไข่</h4>
                     <p class="text-gray-600 text-sm">ฮอร์โมนจะไปกดการทำงานของต่อมใต้สมองและรังไข่ ทำให้ไม่มีไข่สุกและหลุดออกมาในแต่ละรอบเดือน ซึ่งเป็นกลไกสำคัญที่สุดในการป้องกันการตั้งครรภ์</p>
                 </div>
                 <div class="bg-secondary/50 p-8 rounded-2xl text-center hover:shadow-lg transition">
                     <div class="w-full h-40 bg-slate-200 rounded-lg overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="มูกปากมดลูกข้นเหนียว" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl">2</div>
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl font-bold">2</div>
                     <h4 class="text-xl font-bold mb-3 text-gray-900">มูกปากมดลูกข้นเหนียว</h4>
                     <p class="text-gray-600 text-sm">ฮอร์โมนทำให้มูกบริเวณปากมดลูกมีความข้นและเหนียวมากขึ้นอย่างมาก ส่งผลให้ตัวอสุจิไม่สามารถว่ายผ่านเข้าไปผสมกับไข่ในท่อนำไข่ได้</p>
                 </div>
-                <div class="bg-secondary/50 p-8 rounded-2xl text-center hover:shadow-lg transition">
+                <div class="bg-secondary/50 p-8 rounded-2xl text-center hover:shadow-lg transition sm:col-span-2 md:col-span-1">
                     <div class="w-full h-40 bg-slate-200 rounded-lg overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="เยื่อบุมดลูกบางตัว" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl">3</div>
+                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-white text-xl font-bold">3</div>
                     <h4 class="text-xl font-bold mb-3 text-gray-900">เยื่อบุมดลูกบางตัว</h4>
                     <p class="text-gray-600 text-sm">ทำให้เยื่อบุโพรงมดลูกอยู่ในสภาพที่บางและไม่สมบูรณ์ จึงไม่เหมาะสมต่อการฝังตัวของตัวอ่อน (ในกรณีที่เกิดการผสมของไข่และอสุจิหลุดรอดไปได้)</p>
                 </div>
@@ -201,17 +201,17 @@
     <!-- Types and Process -->
     <section id="types" class="py-16 md:py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-start">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                 
                 <!-- Types -->
-                <div class="sticky top-24">
+                <div class="lg:sticky lg:top-24">
                     <h2 class="text-3xl font-bold text-gray-900 mb-6">ชนิดของยาฝังคุมกำเนิด</h2>
                     <p class="text-gray-600 mb-8">ในประเทศไทยปัจจุบันมีให้บริการหลักๆ 2 ชนิด ซึ่งแตกต่างกันที่จำนวนหลอดยา ระยะเวลาในการคุมกำเนิด และชนิดของฮอร์โมนเล็กน้อย</p>
                     
                     <div class="space-y-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                            <div class="w-full h-48 bg-slate-100 rounded-lg overflow-hidden mb-4">
-                                <img src="https://images.unsplash.com/photo-1584308666744-24d5e478ebd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <div class="w-full h-48 sm:h-56 bg-slate-100 rounded-lg overflow-hidden mb-4">
+                                <img src="https://images.unsplash.com/photo-1584308666744-24d5e478ebd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="ยาฝังแบบ 1 หลอด" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="flex items-start gap-4">
                                 <div class="bg-blue-100 p-3 rounded-lg text-primary shrink-0">
@@ -230,8 +230,8 @@
                         </div>
 
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                            <div class="w-full h-48 bg-slate-100 rounded-lg overflow-hidden mb-4">
-                                <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <div class="w-full h-48 sm:h-56 bg-slate-100 rounded-lg overflow-hidden mb-4">
+                                <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="ยาฝังแบบ 2 หลอด" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="flex items-start gap-4">
                                 <div class="bg-blue-100 p-3 rounded-lg text-primary shrink-0">
@@ -251,21 +251,21 @@
                     </div>
                 </div>
 
-                <!-- Process (Timeline with Images) -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <!-- Process (Responsive Timeline) -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-user-doctor text-primary"></i> ขั้นตอนการฝังยาคุมกำเนิด
+                        <i class="fa-solid fa-user-doctor text-primary"></i> ขั้นตอนการฝังยา
                     </h3>
                     <p class="text-gray-500 text-sm mb-8">กระบวนการทั้งหมดใช้เวลาเพียง 10-15 นาที สามารถทำได้ที่ห้องตรวจผู้ป่วยนอก ไม่ต้องนอนโรงพยาบาล</p>
                     
-                    <ul class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary/50 before:via-gray-200 before:to-transparent">
+                    <ul class="space-y-8 relative before:absolute before:inset-0 before:ml-5 md:before:ml-auto md:before:left-1/2 md:before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary/50 before:via-gray-200 before:to-transparent">
                         
                         <!-- Step 1 -->
-                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">1</div>
-                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                        <li class="relative z-10 md:flex md:justify-start">
+                            <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold flex items-center justify-center md:-translate-x-1/2 shadow-md z-10 top-4 md:top-1/2 md:-translate-y-1/2">1</div>
+                            <div class="ml-14 md:ml-0 w-[calc(100%-3.5rem)] md:w-[calc(50%-2rem)] p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm relative">
                                 <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
-                                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="ปรึกษาและซักประวัติ" class="w-full h-full object-cover">
                                 </div>
                                 <h4 class="font-bold text-gray-900 text-lg">ปรึกษาและซักประวัติ</h4>
                                 <p class="text-sm text-gray-600 mt-2 leading-relaxed">แพทย์จะซักประวัติสุขภาพ ตรวจร่างกาย ประเมินความเสี่ยง ตรวจสอบวันที่มีประจำเดือน และให้คำแนะนำเกี่ยวกับผลข้างเคียงที่อาจเกิดขึ้น เพื่อดูว่าคุณเหมาะสมกับยาฝังหรือไม่</p>
@@ -273,11 +273,11 @@
                         </li>
 
                         <!-- Step 2 -->
-                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">2</div>
-                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                        <li class="relative z-10 md:flex md:justify-end">
+                            <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold flex items-center justify-center md:-translate-x-1/2 shadow-md z-10 top-4 md:top-1/2 md:-translate-y-1/2">2</div>
+                            <div class="ml-14 md:ml-0 w-[calc(100%-3.5rem)] md:w-[calc(50%-2rem)] p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm relative">
                                 <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
-                                    <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                    <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="ทำความสะอาดและฉีดยาชา" class="w-full h-full object-cover">
                                 </div>
                                 <h4 class="font-bold text-gray-900 text-lg">ทำความสะอาดและฉีดยาชา</h4>
                                 <p class="text-sm text-gray-600 mt-2 leading-relaxed">พยาบาลจะทำความสะอาดฆ่าเชื้อบริเวณท้องแขนด้านใน (มักเป็นแขนข้างที่ไม่ถนัด เช่น แขนซ้าย) จากนั้นแพทย์จะฉีดยาชาเฉพาะที่ คุณจะรู้สึกเจ็บเล็กน้อยคล้ายมดกัดเฉพาะขั้นตอนนี้</p>
@@ -285,11 +285,11 @@
                         </li>
 
                         <!-- Step 3 -->
-                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">3</div>
-                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                        <li class="relative z-10 md:flex md:justify-start">
+                            <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold flex items-center justify-center md:-translate-x-1/2 shadow-md z-10 top-4 md:top-1/2 md:-translate-y-1/2">3</div>
+                            <div class="ml-14 md:ml-0 w-[calc(100%-3.5rem)] md:w-[calc(50%-2rem)] p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm relative">
                                 <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
-                                    <img src="https://images.unsplash.com/photo-1581594693702-f5c51affd974?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                    <img src="https://images.unsplash.com/photo-1581594693702-f5c51affd974?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="ฝังหลอดยาคุมกำเนิด" class="w-full h-full object-cover">
                                 </div>
                                 <h4 class="font-bold text-gray-900 text-lg">ฝังหลอดยาคุมกำเนิด</h4>
                                 <p class="text-sm text-gray-600 mt-2 leading-relaxed">เมื่อยาชาออกฤทธิ์ แพทย์จะใช้เข็มนำทาง (Trocar) ซึ่งเป็นอุปกรณ์พิเศษสอดหลอดยาเข้าไปใต้ชั้นผิวหนังตื้นๆ ผู้รับบริการจะไม่รู้สึกเจ็บ แต่อาจรู้สึกตึงหรือหน่วงๆ ใช้เวลาขั้นตอนนี้เพียง 1-3 นาที</p>
@@ -297,11 +297,11 @@
                         </li>
 
                         <!-- Step 4 -->
-                        <li class="relative flex flex-col md:flex-row items-center justify-between md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 shadow-md z-10">4</div>
-                            <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm mt-2 md:mt-0">
+                        <li class="relative z-10 md:flex md:justify-end">
+                            <div class="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border-4 border-white bg-primary text-white font-bold flex items-center justify-center md:-translate-x-1/2 shadow-md z-10 top-4 md:top-1/2 md:-translate-y-1/2">4</div>
+                            <div class="ml-14 md:ml-0 w-[calc(100%-3.5rem)] md:w-[calc(50%-2rem)] p-5 rounded-xl border border-gray-100 bg-slate-50 shadow-sm relative">
                                 <div class="w-full h-32 bg-slate-200 rounded overflow-hidden mb-3">
-                                    <img src="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-full h-full object-cover">
+                                    <img src="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="ปิดแผลและพันผ้าห้ามเลือด" class="w-full h-full object-cover">
                                 </div>
                                 <h4 class="font-bold text-gray-900 text-lg">ปิดแผลและพันผ้าห้ามเลือด</h4>
                                 <p class="text-sm text-gray-600 mt-2 leading-relaxed">รอยเจาะจะมีขนาดเล็กมาก (ประมาณ 2 มม.) ไม่ต้องเย็บแผล แพทย์จะปิดพลาสเตอร์กันน้ำ และพันผ้าพันแผลชนิดยืด (Elastic Bandage) ทับอีกชั้นเพื่อห้ามเลือดและลดอาการบวมช้ำ</p>
@@ -325,12 +325,12 @@
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Before -->
-                <div class="bg-indigo-50/50 p-8 rounded-2xl border border-indigo-100 shadow-sm hover:shadow-md transition">
+                <div class="bg-indigo-50/50 p-6 sm:p-8 rounded-2xl border border-indigo-100 shadow-sm hover:shadow-md transition">
                     <h3 class="text-2xl font-bold text-indigo-900 mb-6 flex items-center gap-3">
                         <i class="fa-solid fa-clipboard-check text-indigo-500"></i> ก่อนเข้ารับการฝังยา
                     </h3>
                     <div class="w-full h-48 bg-indigo-100 rounded-lg overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="การเตรียมตัว" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                     </div>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
@@ -353,12 +353,12 @@
                 </div>
 
                 <!-- After -->
-                <div class="bg-teal-50/50 p-8 rounded-2xl border border-teal-100 shadow-sm hover:shadow-md transition">
+                <div class="bg-teal-50/50 p-6 sm:p-8 rounded-2xl border border-teal-100 shadow-sm hover:shadow-md transition">
                     <h3 class="text-2xl font-bold text-teal-900 mb-6 flex items-center gap-3">
                         <i class="fa-solid fa-hand-holding-medical text-teal-500"></i> การดูแลตัวเองหลังฝังยา
                     </h3>
                     <div class="w-full h-48 bg-teal-100 rounded-lg overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="การดูแลหลังฝังยา" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                     </div>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
@@ -393,7 +393,7 @@
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Pros -->
-                <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm relative overflow-hidden group">
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm relative overflow-hidden group">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
                     <div class="flex items-center gap-3 mb-6">
                         <div class="bg-green-100 p-2 rounded-full text-green-600">
@@ -403,7 +403,7 @@
                     </div>
                     
                     <div class="w-full h-40 bg-slate-100 rounded-lg overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="ข้อดี" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
 
                     <ul class="space-y-4">
@@ -431,7 +431,7 @@
                 </div>
 
                 <!-- Cons -->
-                <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm relative overflow-hidden group">
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm relative overflow-hidden group">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
                     <div class="flex items-center gap-3 mb-6">
                         <div class="bg-red-100 p-2 rounded-full text-red-600">
@@ -441,7 +441,7 @@
                     </div>
 
                     <div class="w-full h-40 bg-slate-100 rounded-lg overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="ข้อควรระวัง" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
 
                     <ul class="space-y-4">
@@ -522,16 +522,16 @@
             <div class="space-y-4">
                 <!-- FAQ Item 1 -->
                 <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                    <button class="w-full px-4 sm:px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-base sm:text-lg hover:text-primary transition-colors">
                         <span>1. ตอนฝังยาและถอดออก เจ็บไหม?</span>
                         <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
                     </button>
-                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
-                        <div class="py-5 text-gray-600 flex flex-col md:flex-row gap-4 items-center">
-                            <div class="w-full md:w-1/4 h-24 bg-slate-100 rounded shrink-0 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="[Image of เข็มฉีดยา]" class="w-full h-full object-cover">
+                    <div class="faq-answer px-4 sm:px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                            <div class="w-full sm:w-1/3 md:w-1/4 h-40 sm:h-24 bg-slate-100 rounded-lg shrink-0 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="เข็มฉีดยา" class="w-full h-full object-cover">
                             </div>
-                            <p class="text-sm md:text-base leading-relaxed">
+                            <p class="text-sm md:text-base leading-relaxed flex-1">
                                 <strong>ตอนฝัง:</strong> เจ็บเพียงเล็กน้อยเฉพาะตอนที่แพทย์ฉีดยาชา (คล้ายมดกัด) หลังจากยาชาออกฤทธิ์แล้ว ระหว่างขั้นตอนการใช้เข็มสอดหลอดยาจะไม่รู้สึกเจ็บเลย อาจจะรู้สึกแค่ตึงๆ หรือแรงกดเบาๆ ครับ <br>
                                 <strong>ตอนถอด:</strong> แพทย์จะฉีดยาชาเช่นเดียวกัน จากนั้นจะกรีดแผลเล็กๆ (ประมาณ 2 มม.) ที่ปลายหลอดยาแล้วคีบดึงออก จะไม่รู้สึกเจ็บแต่อาจรู้สึกตึงๆ เช่นกัน
                             </p>
@@ -541,11 +541,11 @@
 
                 <!-- FAQ Item 2 -->
                 <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                    <button class="w-full px-4 sm:px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-base sm:text-lg hover:text-primary transition-colors">
                         <span>2. หลอดยาฝังจะเคลื่อนที่ไปที่อวัยวะอื่น หรือหักในแขนได้ไหม?</span>
                         <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
                     </button>
-                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
+                    <div class="faq-answer px-4 sm:px-6 bg-white border-t border-gray-100">
                         <div class="py-5 text-gray-600">
                             <p class="text-sm md:text-base leading-relaxed">
                                 <strong>โอกาสเกิดน้อยมากๆ ครับ</strong> หลอดยาถูกออกแบบมาให้มีความยืดหยุ่นสูง โอกาสหักจึงยากมาก และแพทย์จะฝังไว้ใต้ชั้นผิวหนังตื้นๆ (Subdermal) ซึ่งเนื้อเยื่อรอบๆ จะสร้างพังผืดบางๆ มาหุ้มหลอดยาไว้ ทำให้มันอยู่กับที่ ไม่เคลื่อนที่ทะลุหลอดเลือดหรือไหลไปที่อวัยวะอื่น คุณสามารถใช้นิ้วคลำเจอหลอดยาใต้ผิวหนังได้ตลอดเวลาเพื่อเช็คตำแหน่ง
@@ -556,16 +556,16 @@
 
                 <!-- FAQ Item 3 -->
                 <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                    <button class="w-full px-4 sm:px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-base sm:text-lg hover:text-primary transition-colors">
                         <span>3. ไม่มีประจำเดือนเลย เลือดเสียจะสะสมหรือเป็นอันตรายไหม?</span>
                         <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
                     </button>
-                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
-                        <div class="py-5 text-gray-600 flex flex-col md:flex-row gap-4 items-center">
-                            <div class="w-full md:w-1/4 h-24 bg-slate-100 rounded shrink-0 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="" class="w-full h-full object-cover">
+                    <div class="faq-answer px-4 sm:px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                            <div class="w-full sm:w-1/3 md:w-1/4 h-40 sm:h-24 bg-slate-100 rounded-lg shrink-0 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="มดลูกจำลอง" class="w-full h-full object-cover">
                             </div>
-                            <p class="text-sm md:text-base leading-relaxed">
+                            <p class="text-sm md:text-base leading-relaxed flex-1">
                                 <strong>ไม่อันตราย และไม่มีเลือดเสียสะสมครับ!</strong> นี่เป็นความเข้าใจผิดที่พบบ่อย กลไกของยาฝังคุมกำเนิดจะทำให้เยื่อบุโพรงมดลูก "ไม่หนาตัวขึ้น" ตั้งแต่แรก เมื่อเยื่อบุไม่หนาตัว จึงไม่มีการหลุดลอกออกมาเป็นประจำเดือนครับ มดลูกของคุณจะสะอาดปกติ ไม่ได้มีเลือดไปอั้นหรือคั่งอยู่ข้างในแต่อย่างใด ถือเป็นผลดีสำหรับคนที่มีภาวะโลหิตจางด้วยครับ
                             </p>
                         </div>
@@ -574,11 +574,11 @@
 
                 <!-- FAQ Item 4 -->
                 <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                    <button class="w-full px-4 sm:px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-base sm:text-lg hover:text-primary transition-colors">
                         <span>4. ฝังยาคุมกำเนิดทำให้อ้วนขึ้นจริงไหม?</span>
                         <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
                     </button>
-                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
+                    <div class="faq-answer px-4 sm:px-6 bg-white border-t border-gray-100">
                         <div class="py-5 text-gray-600">
                             <p class="text-sm md:text-base leading-relaxed">
                                 จากการศึกษาพบว่า ฮอร์โมนในยาฝัง <strong>ไม่ได้ทำให้อ้วนขึ้นโดยตรง</strong> แต่อาจทำให้เกิดภาวะบวมน้ำเล็กน้อยในบางคน หรืออาจทำให้รู้สึกเจริญอาหารมากขึ้น ซึ่งหากควบคุมพฤติกรรมการทานอาหารและออกกำลังกายตามปกติ น้ำหนักตัวก็จะไม่เพิ่มขึ้นครับ (โดยเฉลี่ยแล้วน้ำหนักอาจขึ้นประมาณ 1-2 กิโลกรัมในปีแรกในผู้หญิงบางกลุ่มเท่านั้น)
@@ -589,16 +589,16 @@
 
                 <!-- FAQ Item 5 -->
                 <div class="faq-item bg-slate-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-lg hover:text-primary transition-colors">
+                    <button class="w-full px-4 sm:px-6 py-5 text-left flex justify-between items-center focus:outline-none text-gray-900 font-semibold text-base sm:text-lg hover:text-primary transition-colors">
                         <span>5. สิทธิฝังยาคุมกำเนิดฟรี มีข้อกำหนดอย่างไรบ้าง?</span>
                         <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-gray-400"></i>
                     </button>
-                    <div class="faq-answer px-6 bg-white border-t border-gray-100">
-                        <div class="py-5 text-gray-600 flex flex-col md:flex-row gap-4 items-center">
-                            <div class="w-full md:w-1/4 h-24 bg-slate-100 rounded shrink-0 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="" class="w-full h-full object-cover">
+                    <div class="faq-answer px-4 sm:px-6 bg-white border-t border-gray-100">
+                        <div class="py-5 text-gray-600 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                            <div class="w-full sm:w-1/3 md:w-1/4 h-40 sm:h-24 bg-slate-100 rounded-lg shrink-0 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="สิทธิรักษาพยาบาล" class="w-full h-full object-cover">
                             </div>
-                            <p class="text-sm md:text-base leading-relaxed">
+                            <p class="text-sm md:text-base leading-relaxed flex-1">
                                 ในประเทศไทยภายใต้สิทธิหลักประกันสุขภาพแห่งชาติ (สปสช.):<br>
                                 1. <strong>วัยรุ่นหญิงอายุ 10 - 20 ปีบริบูรณ์</strong> สามารถเข้ารับบริการฝังยาคุมกำเนิด (หรือใส่ห่วงอนามัย) ได้ <strong>ฟรี! ทุกสิทธิการรักษา</strong> ที่สถานพยาบาลของรัฐและเอกชนที่เข้าร่วมโครงการ<br>
                                 2. <strong>สตรีอายุ 20 ปีขึ้นไป</strong> หากอยู่ในภาวะหลังยุติการตั้งครรภ์ (แท้ง) ก็สามารถรับบริการฟรีได้เช่นกัน<br>
@@ -623,7 +623,7 @@
                     </div>
                 </div>
                 <div class="text-center md:text-right">
-                    <p class="text-gray-400 text-sm max-w-md">
+                    <p class="text-gray-400 text-sm max-w-md mx-auto md:ml-auto md:mr-0">
                         <strong>ข้อสงวนสิทธิ์:</strong> ข้อมูลบนเว็บไซต์นี้มีวัตถุประสงค์เพื่อให้ความรู้เบื้องต้นเท่านั้น ไม่สามารถทดแทนคำปรึกษา การวินิจฉัย หรือการรักษาจากแพทย์ผู้เชี่ยวชาญได้ โปรดปรึกษาแพทย์ก่อนตัดสินใจเลือกวิธีคุมกำเนิด
                     </p>
                 </div>
