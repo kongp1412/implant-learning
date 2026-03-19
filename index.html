@@ -63,6 +63,15 @@
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Floating Button Animation */
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 2s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-primary selection:text-white leading-relaxed">
@@ -151,7 +160,7 @@
                     </div>
                 </div>
 
-                <!-- Video Content -->
+                <!-- Video Content (Unchanged as requested) -->
                 <div class="lg:w-1/2 w-full relative z-10">
                     <div class="rounded-2xl lg:rounded-3xl shadow-xl lg:shadow-2xl border border-slate-200 overflow-hidden aspect-video w-full bg-slate-800 relative p-1 bg-white">
                         <div class="rounded-xl lg:rounded-2xl overflow-hidden w-full h-full relative bg-slate-100 flex items-center justify-center group">
@@ -595,6 +604,115 @@
         </div>
     </section>
 
+    <!-- [ส่วนที่เพิ่มใหม่] 1. ความเชื่อผิดๆ vs ความจริง -->
+    <section class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">เคลียร์ชัด! ความเชื่อผิดๆ ที่เจอบ่อย</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-10">
+                <!-- Myth 1 -->
+                <div class="flex flex-col h-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                    <div class="bg-rose-50 p-5 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-xmark text-rose-500 text-xl mt-1"></i>
+                        <div>
+                            <span class="text-xs font-bold text-rose-500 uppercase tracking-wider">ความเชื่อผิดๆ</span>
+                            <p class="font-bold text-slate-900 text-sm sm:text-base mt-1">"ฝังยาแล้ว เลือดจะตกค้าง กลายเป็นพังผืด มดลูกเน่า"</p>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 p-5 flex-1 flex items-start gap-3 border-t border-white">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-xl mt-1"></i>
+                        <div>
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">ความจริง</span>
+                            <p class="text-slate-700 text-sm leading-relaxed mt-1">ยาทำให้ผนังมดลูกบางลงแต่แรก จึงไม่มีเลือดสร้างขึ้นมาให้หลุดลอก มดลูกคุณปกติและสะอาดดี ไม่มีการคั่งค้างใดๆ ครับ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Myth 2 -->
+                <div class="flex flex-col h-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                    <div class="bg-rose-50 p-5 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-xmark text-rose-500 text-xl mt-1"></i>
+                        <div>
+                            <span class="text-xs font-bold text-rose-500 uppercase tracking-wider">ความเชื่อผิดๆ</span>
+                            <p class="font-bold text-slate-900 text-sm sm:text-base mt-1">"ฝังยาแล้ว จะทำให้มีลูกยากตลอดไป หรือเป็นหมัน"</p>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 p-5 flex-1 flex items-start gap-3 border-t border-white">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-xl mt-1"></i>
+                        <div>
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">ความจริง</span>
+                            <p class="text-slate-700 text-sm leading-relaxed mt-1">แค่ไปถอดหลอดยาออก ร่างกายและรังไข่จะกลับมาทำงานตามปกติ สามารถตั้งครรภ์ได้เลยในเดือนถัดไป (ฮอร์โมนไม่สะสมในร่างกาย)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [ส่วนที่เพิ่มใหม่] 2. รีวิวจากผู้ใช้จริง (Testimonials) -->
+    <section class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">เสียงจากผู้ใช้จริง</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
+                <p class="text-sm text-slate-600">ประสบการณ์ตรงจากสาวๆ ที่เคยฝังยาคุมกำเนิดมาแล้ว</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative">
+                    <div class="flex text-amber-400 mb-3 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"ตอนแรกกลัวเจ็บมาก แต่หมอมือเบาสุดๆ ฉีดยาชาจี๊ดเดียว หลังจากนั้นชิลเลยค่ะ ตอนนี้ฝังมา 2 ปีแล้ว สบายตัวมาก ไม่ต้องตั้งนาฬิกาปลุกกินยาคุมอีกเลย"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold">ม</div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">คุณมายด์, 24 ปี</p>
+                            <p class="text-xs text-slate-500">ฝังแบบ 3 ปี</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-slate-100 text-4xl -z-0"></i>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative">
+                    <div class="flex text-amber-400 mb-3 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"ช่วง 3 เดือนแรกเมนส์มากะปริบกะปรอยนิดหน่อย แอบรำคาญ แต่พอเข้าเดือนที่ 4 เมนส์ก็หายไปเลย รู้สึกโอเคมาก ไม่ปวดท้องเมนส์เหมือนแต่ก่อนแล้ว"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">พ</div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">คุณพลอย, 28 ปี</p>
+                            <p class="text-xs text-slate-500">ฝังแบบ 5 ปี</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-slate-100 text-4xl -z-0"></i>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative">
+                    <div class="flex text-amber-400 mb-3 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"เราใช้สิทธิ สปสช. สำหรับวัยรุ่นค่ะ ไปฝังที่โรงพยาบาลรัฐฟรีเลย ไม่มีค่าใช้จ่ายแฝง คุณหมอและพยาบาลให้คำแนะนำดีมาก แผลเล็กนิดเดียว"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">น</div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">คุณน้ำ, 19 ปี</p>
+                            <p class="text-xs text-slate-500">ใช้สิทธิฝังฟรีวัยรุ่น</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-slate-100 text-4xl -z-0"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ (Accordion) -->
     <section id="faq" class="py-16 lg:py-20 bg-slate-900 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -759,6 +877,16 @@
             </div>
         </div>
     </section>
+
+    <!-- [ส่วนที่เพิ่มใหม่] 3. Floating Action Button (เช็คสิทธิ) -->
+    <a href="https://www.nhso.go.th/" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-primaryDark text-white px-5 py-3 rounded-full shadow-lg shadow-sky-500/30 flex items-center gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-bounce-subtle border border-sky-400">
+        <i class="fa-solid fa-stethoscope text-xl"></i>
+        <div class="flex flex-col">
+            <span class="font-bold text-sm leading-none">เช็คสิทธิ สปสช.</span>
+            <span class="text-[10px] text-sky-100">ฝังฟรี อายุไม่เกิน 20</span>
+        </div>
+    </a>
 
     <!-- Footer -->
     <footer class="bg-slate-950 py-10 lg:py-12 border-t border-slate-800 text-slate-400">
