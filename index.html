@@ -72,6 +72,14 @@
         .lang-my [lang="th"], .lang-my [lang="en"] {
             display: none !important;
         }
+
+        /* แก้ปัญหาฟอนต์พม่าทับกัน (Fix Burmese Font Overlapping) */
+        .lang-my h1, .lang-my h2, .lang-my h3, .lang-my h4 {
+            line-height: 1.6 !important;
+        }
+        .lang-my .leading-\[1\.2\], .lang-my .leading-tight, .lang-my .leading-none {
+            line-height: 1.6 !important;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-primary selection:text-white leading-relaxed flex flex-col min-h-screen lang-th">
@@ -459,7 +467,9 @@
                             <h3 class="font-bold text-xl text-slate-900">
                                 <span lang="th">ตัวยาฮอร์โมน</span><span lang="en">The Hormone</span><span lang="my">ဟော်မုန်း</span>
                             </h3>
-                            <p class="text-primary font-semibold">อีโทโนเจสทริล (Etonogestrel)</p>
+                            <p class="text-primary font-semibold">
+                                <span lang="th">อีโทโนเจสทริล (Etonogestrel)</span><span lang="en">Etonogestrel</span><span lang="my">အီတိုနိုဂျက်စထရယ် (Etonogestrel)</span>
+                            </p>
                         </div>
                         <div class="md:w-2/3">
                             <h4 class="text-lg font-bold text-slate-800 mb-3">
@@ -563,25 +573,25 @@
                                 <div class="text-rose-400 mt-1"><i class="fa-solid fa-lungs-virus text-xl"></i></div>
                                 <div><h4 class="font-bold text-slate-200 mb-1">
                                     <span lang="th">ยารักษาวัณโรค</span><span lang="en">Tuberculosis Drugs</span><span lang="my">တီဘီရောဂါကုဆေးများ</span>
-                                </h4><p class="text-xs text-slate-400">เช่น Rifampicin, Rifabutin</p></div>
+                                </h4><p class="text-xs text-slate-400"><span lang="th">เช่น Rifampicin, Rifabutin</span><span lang="en">e.g., Rifampicin, Rifabutin</span><span lang="my">ဥပမာ- Rifampicin, Rifabutin</span></p></div>
                             </div>
                             <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex gap-4 items-start">
                                 <div class="text-rose-400 mt-1"><i class="fa-solid fa-brain text-xl"></i></div>
                                 <div><h4 class="font-bold text-slate-200 mb-1">
                                     <span lang="th">ยากันชัก / ยาลมชัก</span><span lang="en">Anti-seizure Drugs</span><span lang="my">အတက်ရောဂါကုဆေးများ</span>
-                                </h4><p class="text-xs text-slate-400">เช่น Phenytoin, Carbamazepine, Topiramate</p></div>
+                                </h4><p class="text-xs text-slate-400"><span lang="th">เช่น Phenytoin, Carbamazepine, Topiramate</span><span lang="en">e.g., Phenytoin, Carbamazepine, Topiramate</span><span lang="my">ဥပမာ- Phenytoin, Carbamazepine, Topiramate</span></p></div>
                             </div>
                             <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex gap-4 items-start">
                                 <div class="text-rose-400 mt-1"><i class="fa-solid fa-virus text-xl"></i></div>
                                 <div><h4 class="font-bold text-slate-200 mb-1">
                                     <span lang="th">ยาต้านไวรัส HIV บางชนิด</span><span lang="en">Certain HIV Medications</span><span lang="my">အချို့သော HIV ကုဆေးများ</span>
-                                </h4><p class="text-xs text-slate-400">เช่น Efavirenz, Nevirapine</p></div>
+                                </h4><p class="text-xs text-slate-400"><span lang="th">เช่น Efavirenz, Nevirapine</span><span lang="en">e.g., Efavirenz, Nevirapine</span><span lang="my">ဥပမာ- Efavirenz, Nevirapine</span></p></div>
                             </div>
                             <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex gap-4 items-start">
                                 <div class="text-emerald-400 mt-1"><i class="fa-solid fa-leaf text-xl"></i></div>
                                 <div><h4 class="font-bold text-slate-200 mb-1">
                                     <span lang="th">สมุนไพรเซนต์จอห์นเวิร์ต</span><span lang="en">St. John's Wort</span><span lang="my">St. John's Wort ဆေးဘက်ဝင်အပင်</span>
-                                </h4><p class="text-xs text-slate-400">(Herbal depression treatment)</p></div>
+                                </h4><p class="text-xs text-slate-400"><span lang="th">(ยาสมุนไพรแก้ซึมเศร้า)</span><span lang="en">(Herbal depression treatment)</span><span lang="my">(စိတ်ကျရောဂါကုသသော သစ်ဥသစ်ဖု)</span></p></div>
                             </div>
                         </div>
                     </div>
@@ -663,7 +673,7 @@
                                 <div class="absolute inset-0 bg-gradient-to-tr from-primary to-indigo-500 rounded-3xl -rotate-3 shadow-xl group-hover:rotate-0 transition-transform duration-500"></div>
                                 <div class="relative bg-white/20 backdrop-blur-md border border-white/40 w-40 h-40 lg:w-48 lg:h-48 rounded-2xl flex flex-col items-center justify-center text-white shadow-[0_4px_15px_rgba(0,0,0,0.1)]">
                                     <i class="fa-regular fa-calendar-check text-5xl lg:text-6xl mb-3 drop-shadow-md"></i>
-                                    <div class="font-bold text-base lg:text-lg tracking-wide">Timing is Key</div>
+                                    <div class="font-bold text-base lg:text-lg tracking-wide"><span lang="th">การกะเวลา</span><span lang="en">Timing is Key</span><span lang="my">အချိန်ကိုက်</span></div>
                                 </div>
                             </div>
                         </div>
@@ -739,6 +749,16 @@
                         <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
                     </div>
 
+                    <div class="mb-12 relative rounded-3xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1200&auto=format&fit=crop" class="w-full h-48 lg:h-[350px] object-cover shadow-sm" alt="บรรยากาศคลินิกแพทย์" onerror="this.parentElement.innerHTML='<div class=\'w-full h-48 lg:h-[350px] bg-slate-200 flex items-center justify-center\'><i class=\'fa-solid fa-hospital text-4xl text-slate-400\'></i></div>'">
+                        <div class="absolute bottom-4 left-4 lg:bottom-8 lg:left-8 z-20 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+                            <p class="font-bold text-slate-800 text-sm lg:text-base"><i class="fa-solid fa-hospital text-primary mr-2"></i>
+                                <span lang="th">บรรยากาศห้องตรวจสบายๆ ไม่น่ากลัว</span><span lang="en">Relaxing and safe clinic environment</span><span lang="my">သက်သောင့်သက်သာရှိသော ဆေးခန်းပတ်ဝန်းကျင်</span>
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
                         <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100 text-center">
                             <div class="w-14 h-14 mx-auto bg-sky-50 text-sky-500 rounded-full flex items-center justify-center font-bold text-2xl mb-5">1</div>
@@ -773,7 +793,7 @@
                             <div class="absolute inset-0 bg-gradient-to-tr from-teal-400 to-emerald-500 rounded-[3rem] -rotate-3 shadow-xl group-hover:rotate-0 transition-transform duration-500"></div>
                             <div class="relative bg-white/20 backdrop-blur-md border border-white/50 w-48 h-48 rounded-2xl flex flex-col items-center justify-center text-white shadow-lg transition-transform group-hover:scale-105 duration-300">
                                 <i class="fa-solid fa-hand-holding-medical text-6xl mb-3 drop-shadow-md"></i>
-                                <div class="font-bold text-lg tracking-wide">Self-Check</div>
+                                <div class="font-bold text-lg tracking-wide"><span lang="th">คลำเช็กด้วยตัวเอง</span><span lang="en">Self-Check</span><span lang="my">ကိုယ်တိုင်စစ်ဆေးပါ</span></div>
                             </div>
                         </div>
                     </div>
@@ -868,20 +888,96 @@
                 </div>
             </section>
             
-            <!-- Timeline & Care -->
+            <!-- Timeline & Care (RESTORED COMPLETELY & TRANSLATED) -->
             <section class="py-16 bg-white border-t border-slate-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+                            <span lang="th">อาการที่อาจจะเจอ และการดูแล</span><span lang="en">Symptoms & Aftercare</span><span lang="my">လက္ခဏာများနှင့် စောင့်ရှောက်မှု</span>
+                        </h2>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                    </div>
+
                     <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Symptoms Timeline -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-slate-800 mb-4"><i class="fa-solid fa-chart-line text-primary mr-2"></i>
+                                <span lang="th">ไทม์ไลน์หลังฝัง (เรื่องปกติ)</span><span lang="en">Post-Implant Timeline (Normal)</span><span lang="my">ထည့်သွင်းပြီးနောက် လက္ခဏာများ (ပုံမှန်ဖြစ်သည်)</span>
+                            </h3>
+                            <div class="bg-sky-50 p-5 rounded-2xl border border-sky-100 flex gap-4 items-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-sky-500 font-bold shrink-0 shadow-sm">1 M</div>
+                                <div>
+                                    <span class="text-xs font-bold text-sky-500 block mb-1">
+                                        <span lang="th">เดือนแรก</span><span lang="en">First Month</span><span lang="my">ပထမလ</span>
+                                    </span>
+                                    <p class="text-sm font-bold text-slate-900">
+                                        <span lang="th">แขนช้ำนิดๆ ตรงที่ฝัง & เมนส์กะปริบกะปรอย</span>
+                                        <span lang="en">Slight bruising at the site & irregular spotting.</span>
+                                        <span lang="my">လက်မောင်းအနည်းငယ် ညိုမည်းခြင်းနှင့် သွေးအနည်းငယ်ဆင်းခြင်း။</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-50 p-5 rounded-2xl border border-indigo-100 flex gap-4 items-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-indigo-500 font-bold shrink-0 shadow-sm">3 M</div>
+                                <div>
+                                    <span class="text-xs font-bold text-indigo-500 block mb-1">
+                                        <span lang="th">เดือนที่ 3-6</span><span lang="en">Months 3-6</span><span lang="my">၃ လမှ ၆ လ</span>
+                                    </span>
+                                    <p class="text-sm font-bold text-slate-900">
+                                        <span lang="th">ประจำเดือนอาจจะหายไปเลย (ปกติ เลือดไม่ได้คั่งค้าง)</span>
+                                        <span lang="en">Periods may stop completely (Normal, no blood buildup).</span>
+                                        <span lang="my">ရာသီသွေး လုံးဝရပ်သွားနိုင်သည် (ပုံမှန်ဖြစ်သည်၊ သွေးမကျန်ပါ)။</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 flex gap-4 items-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-emerald-500 font-bold shrink-0 shadow-sm">1 Y</div>
+                                <div>
+                                    <span class="text-xs font-bold text-emerald-500 block mb-1">
+                                        <span lang="th">1 ปี ขึ้นไป</span><span lang="en">1 Year & Beyond</span><span lang="my">၁ နှစ်နှင့်အထက်</span>
+                                    </span>
+                                    <p class="text-sm font-bold text-slate-900">
+                                        <span lang="th">ร่างกายชินแล้ว สบายตัว ไม่ปวดท้องเมนส์อีกต่อไป</span>
+                                        <span lang="en">Body adjusts. Comfortable, no more period cramps.</span>
+                                        <span lang="my">ခန္ဓာကိုယ်ကျင့်သားရသွားမည်။ ရာသီလာစဉ်မကိုက်ခဲတော့ပါ။</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Do's and Don'ts -->
                         <div class="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
                             <h3 class="text-xl font-bold text-slate-800 mb-4"><i class="fa-solid fa-kit-medical text-sky-500 mr-2"></i>
-                                <span lang="th">การดูแลแผลเบื้องต้น</span><span lang="en">Aftercare</span><span lang="my">စောင့်ရှောက်မှု</span>
+                                <span lang="th">การดูแลแผลเบื้องต้น</span><span lang="en">Aftercare Instructions</span><span lang="my">စောင့်ရှောက်မှု လမ်းညွှန်ချက်များ</span>
                             </h3>
                             <ul class="space-y-4 text-sm text-slate-700">
-                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg"><i class="fa-solid fa-ban text-rose-500 mt-1 text-lg"></i>
-                                    <div><span lang="th"><strong>ห้ามโดนน้ำ 1-2 วันแรก</strong></span><span lang="en"><strong>Keep dry for 1-2 days.</strong></span><span lang="my"><strong>ပထမ ၁-၂ ရက် ရေမထိပါစေနှင့်။</strong></span></div>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-ban text-rose-500 mt-1 text-lg"></i> 
+                                    <div class="mt-0.5">
+                                        <span lang="th"><strong>ห้ามให้แผลโดนน้ำเด็ดขาด 1-2 วันแรก</strong> (เวลาอาบน้ำให้ใช้ถุงพลาสติกหุ้ม)</span>
+                                        <span lang="en"><strong>Keep the wound strictly dry for 1-2 days.</strong> (Cover with plastic when showering.)</span>
+                                        <span lang="my"><strong>ပထမ ၁-၂ ရက် ရေလုံးဝမထိပါစေနှင့်။</strong> (ရေချိုးလျှင် ပလပ်စတစ်ဖြင့် ဖုံးအုပ်ပါ။)</span>
+                                    </div>
                                 </li>
-                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg"><i class="fa-solid fa-dumbbell text-rose-500 mt-1 text-lg"></i>
-                                    <div><span lang="th"><strong>งดยกของหนัก 1 สัปดาห์</strong></span><span lang="en"><strong>No heavy lifting for 1 week.</strong></span><span lang="my"><strong>၁ ပတ်အတွင်း အလေးအပင်မ,ခြင်း ရှောင်ပါ။</strong></span></div>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-check text-emerald-500 mt-1 text-lg"></i> 
+                                    <div class="mt-0.5">
+                                        <span lang="th">ครบ 24 ชม. แกะผ้ายืด (ที่พันรัดแน่นๆ) ออกได้เลย ปล่อยพลาสเตอร์กันน้ำใสๆ ไว้แบบนั้น</span>
+                                        <span lang="en">After 24 hrs, remove the tight outer bandage. Leave the clear waterproof patch on.</span>
+                                        <span lang="my">၂၄ နာရီပြည့်ပါက အပြင်ပတ်တီးကို ခွာနိုင်ပါသည်။ ရေစိုခံပလပ်စတာကို ဆက်ထားပါ။</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-shower text-emerald-500 mt-1 text-lg"></i> 
+                                    <div class="mt-0.5">
+                                        <span lang="th">พ้น 3-5 วัน แผลจะเริ่มสมาน แกะพลาสเตอร์กันน้ำออก และอาบน้ำถูสบู่เบาๆ ได้ตามปกติ</span>
+                                        <span lang="en">After 3-5 days, remove the clear patch and shower/wash normally.</span>
+                                        <span lang="my">၃-၅ ရက်အကြာတွင် ပလပ်စတာခွာပြီး ပုံမှန်ရေချိုးနိုင်ပါသည်။</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-dumbbell text-rose-500 mt-1 text-lg"></i> 
+                                    <div class="mt-0.5">
+                                        <span lang="th"><strong>งดยกของหนัก</strong> หิ้วถุงหนักๆ เล่นเวทแขน หรือเกร็งแขนแรงๆ 1 สัปดาห์แรก</span>
+                                        <span lang="en"><strong>No heavy lifting</strong> or intense arm workouts for 1 week to avoid inflammation.</span>
+                                        <span lang="my"><strong>၁ ပတ်အတွင်း အလေးအပင်မ,ခြင်း၊</strong> လေ့ကျင့်ခန်းပြင်းပြင်းထန်ထန် လုပ်ခြင်းကို ရှောင်ပါ။</span>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -941,7 +1037,7 @@
                             </p>
                         </div>
 
-                        <!-- Card 2: ประกันสังคม / ข้าราชการ (RESTORED & TRANSLATED) -->
+                        <!-- Card 2: ประกันสังคม / ข้าราชการ -->
                         <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-md border-t-4 border-indigo-500 relative overflow-hidden hover:-translate-y-1 transition-transform duration-300">
                             <div class="absolute -right-4 -top-4 w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center opacity-50"><i class="fa-solid fa-briefcase-medical text-2xl text-indigo-500"></i></div>
                             <h3 class="text-xl font-bold text-slate-800 mb-2">
@@ -962,13 +1058,116 @@
                                 <span lang="th">จ่ายเงินเอง</span><span lang="en">Self-Pay</span><span lang="my">မိမိဘာသာပေးချေခြင်း</span>
                             </h3>
                             <div class="text-xl font-black text-slate-700 mb-4">
-                                2,500 - 8,000+ <span class="text-sm font-normal text-slate-500">THB</span>
+                                2,500 - 8,000+ <span class="text-sm font-normal text-slate-500"><span lang="th">บาท</span><span lang="en">THB</span><span lang="my">ဘတ်</span></span>
                             </div>
                             <p class="text-sm text-slate-600">
                                 <span lang="th">รพ.รัฐ ~3,000 บาท / รพ.เอกชน ~6,000+ บาท</span>
                                 <span lang="en">Gov. Hosp: ~3,000 THB / Private: ~6,000+ THB</span>
                                 <span lang="my">အစိုးရဆေးရုံ ၃,၀၀၀ ဘတ်ခန့် / ပုဂ္ဂလိက ၆,၀၀၀ ဘတ်ခန့်</span>
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Myths vs Facts (RESTORED COMPLETELY & TRANSLATED) -->
+            <section class="py-16 bg-white border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+                            <span lang="th">เคลียร์ชัด! ความเชื่อผิดๆ ที่เจอบ่อย</span><span lang="en">Debunking Common Myths!</span><span lang="my">အဖြစ်များသော အထင်အမြင်လွဲမှားမှုများကို ရှင်းလင်းခြင်း!</span>
+                        </h2>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5">
+                                <span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>
+                                    <span lang="th">ความเชื่อผิดๆ</span><span lang="en">Myth</span><span lang="my">အထင်အမြင်လွဲမှားမှု</span>
+                                </span>
+                                <p class="font-bold text-slate-900 mt-2 text-lg">
+                                    <span lang="th">"ฝังยาแล้ว เลือดจะตกค้าง กลายเป็นพังผืด มดลูกเน่า"</span>
+                                    <span lang="en">"Blood stays inside and rots the uterus."</span>
+                                    <span lang="my">"သွေးဟောင်းများကျန်ပြီး သားအိမ်ပုပ်စေသည်။"</span>
+                                </p>
+                            </div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow">
+                                <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>
+                                    <span lang="th">ความจริง</span><span lang="en">Fact</span><span lang="my">အမှန်တရား</span>
+                                </span>
+                                <p class="text-slate-700 text-sm mt-2 leading-relaxed">
+                                    <span lang="th">ยาทำให้ผนังมดลูกบางลง จึงไม่มีเลือดสร้างขึ้นมาให้หลุดลอก มดลูกคุณสะอาดและปกติเหมือนคนทั่วไป ไม่มีการคั่งค้างใดๆ ทั้งสิ้นครับ</span>
+                                    <span lang="en">The hormone thins the lining, so no blood is built up to shed. Your uterus is clean and normal. No buildup whatsoever.</span>
+                                    <span lang="my">ဟော်မုန်းက သားအိမ်နံရံကို ပါးစေတဲ့အတွက် ဆင်းစရာသွေး မရှိတော့တာပါ။ သားအိမ်ဟာ ပုံမှန်အတိုင်း သန့်ရှင်းနေပြီး သွေးဟောင်းကျန်တာမျိုး လုံးဝမရှိပါဘူး။</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5">
+                                <span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>
+                                    <span lang="th">ความเชื่อผิดๆ</span><span lang="en">Myth</span><span lang="my">အထင်အမြင်လွဲမှားမှု</span>
+                                </span>
+                                <p class="font-bold text-slate-900 mt-2 text-lg">
+                                    <span lang="th">"ฝังยาแล้ว จะทำให้มีลูกยากตลอดไป หรือเป็นหมัน"</span>
+                                    <span lang="en">"It makes you permanently infertile."</span>
+                                    <span lang="my">"အမြဲတမ်း ကလေးမရနိုင်တော့ဘူး (သို့) မြုံသွားမယ်။"</span>
+                                </p>
+                            </div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow">
+                                <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>
+                                    <span lang="th">ความจริง</span><span lang="en">Fact</span><span lang="my">အမှန်တရား</span>
+                                </span>
+                                <p class="text-slate-700 text-sm mt-2 leading-relaxed">
+                                    <span lang="th">แค่ไปถอดหลอดยาออก ร่างกายจะกลับมาทำงานปกติทันที สามารถตั้งครรภ์ได้เลยใน 1-2 เดือนถัดไป ฮอร์โมนตัวนี้ไม่สะสมในร่างกายครับ</span>
+                                    <span lang="en">Once removed, fertility returns immediately. You can get pregnant within 1-2 months. No hormone buildup.</span>
+                                    <span lang="my">ဆင်းတုကို ဖယ်ရှားလိုက်တာနဲ့ ခန္ဓာကိုယ်က ပုံမှန်အတိုင်း ပြန်ဖြစ်သွားပြီး ၁-၂ လအတွင်း ကိုယ်ဝန်ပြန်ရနိုင်ပါတယ်။ ဟော်မုန်းတွေ ခန္ဓာကိုယ်ထဲမှာ စုပုံမနေပါဘူး။</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5">
+                                <span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>
+                                    <span lang="th">ความเชื่อผิดๆ</span><span lang="en">Myth</span><span lang="my">အထင်အမြင်လွဲမှားမှု</span>
+                                </span>
+                                <p class="font-bold text-slate-900 mt-2 text-lg">
+                                    <span lang="th">"แฟนจะคลำเจอ แล้วจะรู้สึกแปลกๆ เวลาโดนแขน"</span>
+                                    <span lang="en">"Partner will feel it and it feels weird."</span>
+                                    <span lang="my">"လက်မောင်းကို ထိမိရင် ဆင်းတုကို စမ်းမိပြီး ထူးဆန်းနေမယ်။"</span>
+                                </p>
+                            </div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow">
+                                <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>
+                                    <span lang="th">ความจริง</span><span lang="en">Fact</span><span lang="my">အမှန်တရား</span>
+                                </span>
+                                <p class="text-slate-700 text-sm mt-2 leading-relaxed">
+                                    <span lang="th">ถ้าลูบหรือคลำตั้งใจหา จะเจอเป็นแท่งยืดหยุ่นใต้ผิวหนังครับ แต่การกอด แตะ หรือโดนแขนแบบปกติ จะไม่รู้สึกสะดุดและไม่เจ็บเลย ใช้ชีวิตได้ปกติ 100%</span>
+                                    <span lang="en">You can feel it if you press intentionally, but normal hugs or touches won't be noticeable or painful. 100% normal life.</span>
+                                    <span lang="my">သေချာစမ်းကြည့်ရင်တော့ အရေပြားအောက်မှာ ပျော့ပျောင်းတဲ့ ပြွန်လေးကို စမ်းမိနိုင်ပါတယ်။ ဒါပေမယ့် ပုံမှန် ဖက်တာ၊ ထိတာမျိုးမှာတော့ မသိသာသလို နာကျင်မှုလည်း မရှိပါဘူး။ ၁၀၀% ပုံမှန် နေထိုင်နိုင်ပါတယ်။</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5">
+                                <span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>
+                                    <span lang="th">ความเชื่อผิดๆ</span><span lang="en">Myth</span><span lang="my">အထင်အမြင်လွဲမှားမှု</span>
+                                </span>
+                                <p class="font-bold text-slate-900 mt-2 text-lg">
+                                    <span lang="th">"เดินผ่านเครื่องสแกนที่สนามบิน เครื่องจะร้องดัง"</span>
+                                    <span lang="en">"Airport scanners will beep."</span>
+                                    <span lang="my">"လေဆိပ် စကင်နာဖြတ်ရင် အသံမြည်မယ်။"</span>
+                                </p>
+                            </div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow">
+                                <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>
+                                    <span lang="th">ความจริง</span><span lang="en">Fact</span><span lang="my">အမှန်တရား</span>
+                                </span>
+                                <p class="text-slate-700 text-sm mt-2 leading-relaxed">
+                                    <span lang="th">หลอดยาฝังทำจากโพลีเมอร์พลาสติกทางการแพทย์ (EVA) ไม่มีส่วนผสมของโลหะใดๆ ดังนั้นเดินผ่านเครื่องสแกน หรือทำ MRI ได้สบายมาก เครื่องไม่ร้องแน่นอนครับ</span>
+                                    <span lang="en">The implant is made of medical plastic (EVA) with no metal. It won't trigger scanners or affect MRIs.</span>
+                                    <span lang="my">ဆင်းတုကို ဆေးဘက်ဝင် ပလပ်စတစ် (EVA) နဲ့ ပြုလုပ်ထားပြီး သတ္တု လုံးဝမပါဝင်ပါဘူး။ ဒါကြောင့် လေဆိပ်စကင်နာဖြတ်တာ၊ MRI ရိုက်တာတွေမှာ အသံမမြည်ဘဲ လုံခြုံစွာ လုပ်ဆောင်နိုင်ပါတယ်။</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
