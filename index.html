@@ -3,13 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ป้องกันการจำ Cache เพื่อให้โหลดหน้าเว็บเวอร์ชั่นใหม่ล่าสุดเสมอ -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-
-    <title>ยาฝังคุมกำเนิด | ข้อมูลสำหรับประชาชน</title>
+    <title>ยาฝังคุมกำเนิด | สาระแนสุขภาพสตรี (Multi-page)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,18 +13,15 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Prompt', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Prompt', 'sans-serif'] },
                     colors: {
-                        primary: '#0ea5e9', // Sky 500
-                        primaryDark: '#0284c7', // Sky 600
-                        secondary: '#f0f9ff', // Sky 50
+                        primary: '#0ea5e9',
+                        primaryDark: '#0284c7',
+                        secondary: '#f0f9ff',
                         surface: '#ffffff',
                     },
                     boxShadow: {
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'glow': '0 0 20px rgba(14, 165, 233, 0.15)',
                     }
                 }
             }
@@ -42,12 +33,8 @@
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .faq-item.active .faq-answer {
-            max-height: 800px;
-        }
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
+        .faq-item.active .faq-answer { max-height: 800px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
         .gradient-text {
             background-clip: text;
             -webkit-background-clip: text;
@@ -64,23 +51,29 @@
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
-        /* Floating Button Animation */
         @keyframes bounce-subtle {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
-        .animate-bounce-subtle {
-            animation: bounce-subtle 2s infinite ease-in-out;
+        .animate-bounce-subtle { animation: bounce-subtle 2s infinite ease-in-out; }
+        
+        /* Fade animation for page transition */
+        .page-content {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-primary selection:text-white leading-relaxed">
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-primary selection:text-white leading-relaxed flex flex-col min-h-screen">
 
     <!-- Navigation -->
     <nav class="fixed w-full glass shadow-sm z-50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 lg:h-20 items-center">
-                <div class="flex-shrink-0 flex items-center gap-2 lg:gap-3">
+                <div class="flex-shrink-0 flex items-center gap-2 lg:gap-3 cursor-pointer" onclick="window.location.hash='home'">
                     <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                         <i class="fa-solid fa-capsules text-lg lg:text-xl"></i>
                     </div>
@@ -89,12 +82,10 @@
                 
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex space-x-6 xl:space-x-8">
-                    <a href="#overview" class="text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors">คืออะไร?</a>
-                    <a href="#mechanism" class="text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors">ทำงานยังไง</a>
-                    <a href="#procedure" class="text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors">ขั้นตอนการทำ</a>
-                    <a href="#timeline" class="text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors">อาการที่พบได้</a>
-                    <a href="#aftercare" class="text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors">การดูแลตัวเอง</a>
-                    <a href="#faq" class="text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors">ถาม-ตอบ</a>
+                    <a href="#home" class="nav-link text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors" data-target="home">หน้าแรก</a>
+                    <a href="#mechanism" class="nav-link text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors" data-target="mechanism">การทำงาน</a>
+                    <a href="#procedure" class="nav-link text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors" data-target="procedure">ขั้นตอน & การดูแล</a>
+                    <a href="#faq" class="nav-link text-xs xl:text-sm font-medium text-slate-600 hover:text-primary transition-colors" data-target="faq">ถาม-ตอบ</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -109,779 +100,601 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl max-h-[80vh] overflow-y-auto">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#overview" class="block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium mobile-link">ยาฝังคืออะไร?</a>
-                <a href="#mechanism" class="block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium mobile-link">ป้องกันท้องได้ยังไง</a>
-                <a href="#procedure" class="block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium mobile-link">ขั้นตอนการฝัง</a>
-                <a href="#comparison" class="block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium mobile-link">เทียบกับยาคุมแบบอื่น</a>
-                <a href="#timeline" class="block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium mobile-link">อาการข้างเคียง</a>
-                <a href="#aftercare" class="block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium mobile-link">การดูแลหลังฝัง</a>
-                <a href="#faq" class="block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium mobile-link">คำถามฮิต (FAQ)</a>
+                <a href="#home" class="nav-link mobile-link block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium" data-target="home">หน้าแรก</a>
+                <a href="#mechanism" class="nav-link mobile-link block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium" data-target="mechanism">การทำงาน (กันท้องยังไง)</a>
+                <a href="#procedure" class="nav-link mobile-link block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium" data-target="procedure">ขั้นตอนฝัง & การดูแลหลังทำ</a>
+                <a href="#faq" class="nav-link mobile-link block px-4 py-3 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg font-medium" data-target="faq">คำถามฮิต (FAQ)</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-24 pb-12 lg:pt-40 lg:pb-32 overflow-hidden bg-white">
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-            <div class="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-sky-100/50 to-blue-50/50 blur-3xl"></div>
-            <div class="absolute top-[40%] -left-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-indigo-50/50 to-sky-50/50 blur-3xl"></div>
-        </div>
+    <!-- Main Content Container (Simulating Pages) -->
+    <main class="flex-grow pt-16 lg:pt-20">
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-                <!-- Text Content -->
-                <div class="lg:w-1/2 w-full text-center lg:text-left mt-8 lg:mt-0">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-100 text-primary text-xs sm:text-sm font-semibold mb-6">
-                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                        คู่มือสุขภาพสตรี
-                    </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 lg:mb-6 text-slate-900 leading-[1.2]">
-                        ยาฝังคุมกำเนิด <br>
-                        <span class="bg-gradient-to-r from-primary to-indigo-500 gradient-text block mt-1">ฝังปุ๊บ คุมยาว ลืมได้เลย</span>
-                    </h1>
-                    <p class="text-base md:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
-                        กันท้องได้ชัวร์ถึง <strong class="text-primary font-bold">99.9%</strong> ปลอดภัย สะดวก แค่ฝังไว้ที่ท้องแขน ก็ไม่ต้องทนตื่นมากินยาคุมทุกวันให้วุ่นวายอีกต่อไป!
-                    </p>
-                    
-                    <!-- Stats Grid -->
-                    <div class="grid grid-cols-3 gap-2 sm:gap-6 mb-8 pt-6 lg:pt-8 border-t border-slate-100">
-                        <div>
-                            <p class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">99.9%</p>
-                            <p class="text-[10px] sm:text-xs text-slate-500 font-medium uppercase tracking-wide">ป้องกันได้ชัวร์</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">3-5 <span class="text-base sm:text-lg font-normal">ปี</span></p>
-                            <p class="text-[10px] sm:text-xs text-slate-500 font-medium uppercase tracking-wide">คุมได้ยาวนาน</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">100%</p>
-                            <p class="text-[10px] sm:text-xs text-slate-500 font-medium uppercase tracking-wide">ถอดแล้วท้องได้ปกติ</p>
-                        </div>
-                    </div>
+        <!-- ========================================== -->
+        <!-- PAGE 1: HOME -->
+        <!-- ========================================== -->
+        <div id="page-home" class="page-section hidden">
+            <!-- Hero Section -->
+            <section class="relative pt-8 pb-12 lg:pt-20 lg:pb-24 overflow-hidden bg-white">
+                <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+                    <div class="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-sky-100/50 to-blue-50/50 blur-3xl"></div>
+                    <div class="absolute top-[40%] -left-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-indigo-50/50 to-sky-50/50 blur-3xl"></div>
                 </div>
 
-                <!-- Video Content (Unchanged as requested) -->
-                <div class="lg:w-1/2 w-full relative z-10">
-                    <div class="rounded-2xl lg:rounded-3xl shadow-xl lg:shadow-2xl border border-slate-200 overflow-hidden aspect-video w-full bg-slate-800 relative p-1 bg-white">
-                        <div class="rounded-xl lg:rounded-2xl overflow-hidden w-full h-full relative bg-slate-100 flex items-center justify-center group">
-                            <!-- เพิ่ม poster รูปภาพให้ดูน่าสนใจก่อนที่วิดีโอจะเล่น -->
-                             <video 
-                                poster="https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=1000&auto=format&fit=crop"
-                                src="ไขข้อสงสัยก่อนใช้ยาฝังคุมกำเนิด _ โรงพยาบาลธนบุรี.mp4" 
-                                class="w-full h-full object-cover"
-                                autoplay 
-                                muted 
-                                loop 
-                                playsinline
-                                controls
-                                onerror="this.parentElement.innerHTML='<img src=\'https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=1000&auto=format&fit=crop\' class=\'w-full h-full object-cover\'>'"
-                            >
-                            </video>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <a href="https://www.youtube.com/watch?v=gbOhpOQo1Es" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-500 hover:text-primary transition-colors bg-white px-3 py-2 sm:px-4 sm:py-2 rounded-full shadow-sm border border-slate-100">
-                            <i class="fa-brands fa-youtube text-red-500 text-base sm:text-lg"></i>
-                            <span>ขอบคุณข้อมูลจาก รพ.ธนบุรี</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Overview (Deep Dive) -->
-    <section id="overview" class="py-16 lg:py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-[1.5rem] lg:rounded-[2rem] shadow-soft border border-slate-100 p-6 sm:p-8 lg:p-12">
-                <!-- เปลี่ยน Layout ตรงนี้ให้มีรูปภาพประกอบกับเนื้อหา -->
-                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-8 lg:mb-12">
-                    <div class="lg:col-span-7">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4 lg:mb-6 text-slate-900">ยาฝังคุมกำเนิดคืออะไร?</h2>
-                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4 lg:mb-6">
-                            มันคือหลอดพลาสติกเล็กๆ นิ่มๆ ขนาดพอๆ กับ <strong>ก้านไม้ขีดไฟ</strong> (ยาว 4 ซม.) ข้างในจะมียาฮอร์โมนบรรจุอยู่ 
-                        </p>
-                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                            คุณหมอจะฉีดยาชา และสอดหลอดนี้เข้าไปซ่อนไว้ <strong>ใต้ผิวหนังบริเวณท้องแขนด้านใน</strong> (แขนข้างที่เราไม่ค่อยถนัด) ตัวหลอดจะค่อยๆ ปล่อยยาคุมออกมาทีละนิดๆ ทุกวันอย่างสม่ำเสมอ ทำให้เราไม่ต้องกังวลเรื่องลืมกินยาเลยครับ
-                        </p>
-                    </div>
-                    <div class="lg:col-span-5 relative">
-                        <!-- แทรกรูปภาพคุณหมอ / การให้คำปรึกษา -->
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="ปรึกษาแพทย์เรื่องยาฝังคุมกำเนิด" class="rounded-2xl shadow-lg w-full h-[250px] lg:h-[300px] object-cover" loading="lazy">
-                        <!-- Badge ตกแต่งภาพ -->
-                        <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 border border-slate-100">
-                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
-                                <i class="fa-solid fa-user-doctor"></i>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                        <div class="lg:w-1/2 w-full text-center lg:text-left mt-8 lg:mt-0">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-100 text-primary text-xs sm:text-sm font-semibold mb-6">
+                                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                คู่มือสุขภาพสตรี
                             </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-800">ปรึกษาแพทย์</p>
-                                <p class="text-[10px] text-slate-500">ปลอดภัย 100%</p>
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 lg:mb-6 text-slate-900 leading-[1.2]">
+                                ยาฝังคุมกำเนิด <br>
+                                <span class="bg-gradient-to-r from-primary to-indigo-500 gradient-text block mt-1">ฝังปุ๊บ คุมยาว ลืมได้เลย</span>
+                            </h1>
+                            <p class="text-base md:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                                กันท้องได้ชัวร์ถึง <strong class="text-primary font-bold">99.9%</strong> ปลอดภัย สะดวก แค่ฝังไว้ที่ท้องแขน ก็ไม่ต้องทนตื่นมากินยาคุมทุกวันให้วุ่นวายอีกต่อไป!
+                            </p>
+                            
+                            <!-- Stats Grid -->
+                            <div class="grid grid-cols-3 gap-2 sm:gap-6 mb-8 pt-6 lg:pt-8 border-t border-slate-100">
+                                <div>
+                                    <p class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">99.9%</p>
+                                    <p class="text-[10px] sm:text-xs text-slate-500 font-medium uppercase tracking-wide">ป้องกันได้ชัวร์</p>
+                                </div>
+                                <div>
+                                    <p class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">3-5 <span class="text-base sm:text-lg font-normal">ปี</span></p>
+                                    <p class="text-[10px] sm:text-xs text-slate-500 font-medium uppercase tracking-wide">คุมได้ยาวนาน</p>
+                                </div>
+                                <div>
+                                    <p class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">100%</p>
+                                    <p class="text-[10px] sm:text-xs text-slate-500 font-medium uppercase tracking-wide">ถอดแล้วท้องได้ปกติ</p>
+                                </div>
+                            </div>
+                            <a href="#mechanism" class="inline-block bg-primary hover:bg-primaryDark text-white font-medium py-3 px-8 rounded-full transition-colors shadow-lg shadow-sky-200">
+                                ดูวิธีทำงานของยา <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+
+                        <!-- Video Content -->
+                        <div class="lg:w-1/2 w-full relative z-10">
+                            <div class="rounded-2xl lg:rounded-3xl shadow-xl lg:shadow-2xl border border-slate-200 overflow-hidden aspect-video w-full bg-white relative p-1">
+                                <div class="rounded-xl lg:rounded-2xl overflow-hidden w-full h-full relative bg-slate-100 flex items-center justify-center">
+                                     <video 
+                                        poster="https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=1000&auto=format&fit=crop"
+                                        src="ไขข้อสงสัยก่อนใช้ยาฝังคุมกำเนิด _ โรงพยาบาลธนบุรี.mp4" 
+                                        class="w-full h-full object-cover"
+                                        autoplay muted loop playsinline controls
+                                        onerror="this.parentElement.innerHTML='<img src=\'https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=1000&auto=format&fit=crop\' class=\'w-full h-full object-cover\'>'">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="https://www.youtube.com/watch?v=gbOhpOQo1Es" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-500 hover:text-primary transition-colors bg-white px-3 py-2 sm:px-4 sm:py-2 rounded-full shadow-sm border border-slate-100">
+                                    <i class="fa-brands fa-youtube text-red-500 text-base sm:text-lg"></i>
+                                    <span>ขอบคุณข้อมูลจาก รพ.ธนบุรี</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- 4 Icons Grid Moved Below -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                    <div class="bg-sky-50 rounded-2xl p-5 sm:p-6 text-center">
-                        <i class="fa-solid fa-droplet text-primary text-2xl sm:text-3xl mb-2 sm:mb-3"></i>
-                        <h4 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">ฮอร์โมนปลอดภัย</h4>
-                        <p class="text-xs sm:text-sm text-slate-500">คุณแม่ให้นมลูกสามารถใช้ได้ น้ำนมไม่หด</p>
+            <!-- Testimonials -->
+            <section class="py-16 bg-white border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">เสียงจากผู้ใช้จริง</h2>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
+                        <p class="text-sm text-slate-600">ประสบการณ์ตรงจากสาวๆ ที่เคยฝังยาคุมกำเนิดมาแล้ว</p>
                     </div>
-                    <div class="bg-indigo-50 rounded-2xl p-5 sm:p-6 text-center">
-                        <i class="fa-solid fa-hourglass-half text-indigo-500 text-2xl sm:text-3xl mb-2 sm:mb-3"></i>
-                        <h4 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">ปล่อยยาอัตโนมัติ</h4>
-                        <p class="text-xs sm:text-sm text-slate-500">ยาค่อยๆ ซึมออกทีละนิด คุมได้นาน 3-5 ปี</p>
-                    </div>
-                    <div class="bg-emerald-50 rounded-2xl p-5 sm:p-6 text-center">
-                        <i class="fa-solid fa-wand-magic-sparkles text-emerald-500 text-2xl sm:text-3xl mb-2 sm:mb-3"></i>
-                        <h4 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">ไม่ต้องท่องจำ</h4>
-                        <p class="text-xs sm:text-sm text-slate-500">บอกลาการตั้งนาฬิกาปลุกกินยาทุกวันได้เลย</p>
-                    </div>
-                    <div class="bg-rose-50 rounded-2xl p-5 sm:p-6 text-center">
-                        <i class="fa-solid fa-user-doctor text-rose-500 text-2xl sm:text-3xl mb-2 sm:mb-3"></i>
-                        <h4 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">ทำโดยคุณหมอ</h4>
-                        <p class="text-xs sm:text-sm text-slate-500">ปลอดภัย มั่นใจ ใช้เวลาแป๊บเดียวแค่ 15 นาที</p>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Review 1 -->
+                        <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-100 relative">
+                            <div class="flex text-amber-400 mb-3 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"ตอนแรกกลัวเจ็บมาก แต่หมอมือเบาสุดๆ ฉีดยาชาจี๊ดเดียว หลังจากนั้นชิลเลยค่ะ ตอนนี้ฝังมา 2 ปีแล้ว สบายตัวมาก ไม่ต้องตั้งนาฬิกาปลุกกินยาคุมอีกเลย"</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold">ม</div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-900">คุณมายด์, 24 ปี</p>
+                                    <p class="text-xs text-slate-500">ฝังแบบ 3 ปี</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Review 2 -->
+                        <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-100 relative">
+                            <div class="flex text-amber-400 mb-3 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"ช่วง 3 เดือนแรกเมนส์มากะปริบกะปรอยนิดหน่อย แต่พอเข้าเดือนที่ 4 เมนส์ก็หายไปเลย รู้สึกโอเคมาก ไม่ปวดท้องเมนส์เหมือนแต่ก่อนแล้ว"</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">พ</div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-900">คุณพลอย, 28 ปี</p>
+                                    <p class="text-xs text-slate-500">ฝังแบบ 5 ปี</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Review 3 -->
+                        <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-100 relative">
+                            <div class="flex text-amber-400 mb-3 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"เราใช้สิทธิ สปสช. สำหรับวัยรุ่นค่ะ ไปฝังที่โรงพยาบาลรัฐฟรีเลย ไม่มีค่าใช้จ่ายแฝง คุณหมอและพยาบาลให้คำแนะนำดีมาก แผลเล็กนิดเดียว"</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">น</div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-900">คุณน้ำ, 19 ปี</p>
+                                    <p class="text-xs text-slate-500">ใช้สิทธิฝังฟรีวัยรุ่น</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- ข้อควรระวังเรื่องโรคติดต่อทางเพศสัมพันธ์ -->
-                <div class="mt-8 lg:mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-sm">
-                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-500 text-xl shrink-0">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 mb-1">ข้อควรระวังสำคัญ!</h4>
-                        <p class="text-sm text-slate-700 leading-relaxed">ยาฝังคุมกำเนิด ป้องกันการท้องได้ 99.9% <strong class="text-amber-600">แต่ไม่สามารถป้องกันโรคติดต่อทางเพศสัมพันธ์ได้เลย</strong> (เช่น HIV, ซิฟิลิส, หนองใน) หากไม่มั่นใจ หรือเปลี่ยนคู่นอนใหม่ ควรใช้ <strong>"ถุงยางอนามัย"</strong> ร่วมด้วยเสมอครับ</p>
-                    </div>
-                </div>
-
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- 4 Mechanisms -->
-    <section id="mechanism" class="py-16 lg:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">กันท้องได้ยังไง? (การป้องกัน 4 ชั้น)</h2>
-                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4 lg:mb-6"></div>
-                <p class="text-sm sm:text-base text-slate-600">กลไกของฮอร์โมนที่สร้างกำแพงเหล็ก ทำให้เปอร์เซ็นต์หลุดท้องแทบจะเป็นศูนย์</p>
-            </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                <!-- 1 -->
-                <div class="bg-slate-50 border border-slate-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-primary text-xl sm:text-2xl mb-4 sm:mb-6">
-                        <i class="fa-solid fa-ban"></i>
+        <!-- ========================================== -->
+        <!-- PAGE 2: MECHANISM & COMPARISON -->
+        <!-- ========================================== -->
+        <div id="page-mechanism" class="page-section hidden">
+            
+            <!-- Hormone Deep Dive (NEW) -->
+            <section class="py-12 bg-sky-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-white rounded-[2rem] p-8 border border-sky-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/3 text-center">
+                            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-sky-400 to-indigo-500 rounded-full flex items-center justify-center text-white text-4xl shadow-lg mb-4">
+                                <i class="fa-solid fa-dna"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-slate-900">ตัวยาฮอร์โมน</h3>
+                            <p class="text-primary font-semibold">อีโทโนเจสทริล (Etonogestrel)</p>
+                        </div>
+                        <div class="md:w-2/3">
+                            <h4 class="text-lg font-bold text-slate-800 mb-3">เจาะลึก: ทำไมยาฝังถึงปลอดภัย?</h4>
+                            <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-3">
+                                ยาฝังคุมกำเนิดใช้ฮอร์โมนกลุ่ม <strong>"โปรเจสติน (Progestin)" ชนิดเดี่ยว</strong> ข้อดีคือ <strong>"ไม่มีส่วนผสมของฮอร์โมนเอสโตรเจน"</strong> ซึ่งเป็นตัวการที่มักทำให้เกิดผลข้างเคียงน่ารำคาญในยาคุมแบบกิน เช่น อาการคลื่นไส้ อาเจียน ฝ้าขึ้น หรือฝั่งอันตรายอย่างความเสี่ยง "ลิ่มเลือดอุดตัน"
+                            </p>
+                            <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                                ดังนั้นคนที่สูบบุหรี่จัด, มีน้ำหนักตัวเกินเกณฑ์มาก, หรือให้นมลูกอยู่ จึงสามารถใช้ยาฝังชนิดนี้ได้อย่างสบายใจครับ
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">1. สั่งรังไข่ให้หยุดพัก</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        สำคัญที่สุด! ยาจะไปสั่งให้รังไข่ไม่ต้องปล่อย "ไข่" ออกมาในแต่ละเดือน <strong>เมื่อไม่มีไข่ อสุจิก็ไม่มีอะไรให้ผสมด้วย</strong>
-                    </p>
                 </div>
-                <!-- 2 -->
-                <div class="bg-slate-50 border border-slate-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-primary text-xl sm:text-2xl mb-4 sm:mb-6">
-                        <i class="fa-solid fa-shield-halved"></i>
+            </section>
+
+            <!-- 4 Mechanisms -->
+            <section class="py-12 lg:py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">กันท้องได้ยังไง? (การป้องกัน 4 ชั้น)</h2>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4 lg:mb-6"></div>
+                        <p class="text-sm sm:text-base text-slate-600">กลไกของฮอร์โมนที่สร้างกำแพงเหล็ก ทำให้เปอร์เซ็นต์หลุดท้องแทบจะเป็นศูนย์</p>
                     </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">2. สร้างเมือกเหนียวข้น</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        ยาจะทำให้เมือกตรงปากมดลูกเหนียวและข้นมากๆ ทำหน้าที่เหมือน <strong>"กำแพงกาวตังเม"</strong> ดักจับและกันไม่ให้อสุจิว่ายผ่านเข้าไปได้
-                    </p>
-                </div>
-                <!-- 3 -->
-                <div class="bg-slate-50 border border-slate-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-primary text-xl sm:text-2xl mb-4 sm:mb-6">
-                        <i class="fa-solid fa-layer-group"></i>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        <!-- 1 -->
+                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 sm:p-8 hover:shadow-lg transition-all">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary text-xl mb-4">
+                                <i class="fa-solid fa-ban"></i>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">1. สั่งรังไข่ให้หยุดพัก</h3>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">สำคัญที่สุด! ยาจะไปสั่งให้รังไข่ไม่ต้องปล่อย "ไข่" ออกมาในแต่ละเดือน เมื่อไม่มีไข่ อสุจิก็ไม่มีอะไรให้ผสม</p>
+                        </div>
+                        <!-- 2 -->
+                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 sm:p-8 hover:shadow-lg transition-all">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary text-xl mb-4">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">2. สร้างเมือกเหนียวข้น</h3>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">ยาทำให้เมือกตรงปากมดลูกเหนียวและข้นมากๆ ทำหน้าที่เหมือน "กำแพงกาวตังเม" กันอสุจิว่ายผ่าน</p>
+                        </div>
+                        <!-- 3 -->
+                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 sm:p-8 hover:shadow-lg transition-all">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary text-xl mb-4">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">3. มดลูกไม่พร้อมรับแขก</h3>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">ผนังมดลูกบางตัวลง เหมือนดินที่แห้งแล้ง ต่อให้มีตัวอ่อนหลุดมาก็ไม่สามารถฝังตัวเติบโตได้</p>
+                        </div>
+                        <!-- 4 -->
+                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 sm:p-8 hover:shadow-lg transition-all">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary text-xl mb-4">
+                                <i class="fa-solid fa-water"></i>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">4. ทางเดินขรุขระ</h3>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">ทำให้ท่อนำไข่ (ทางเดินอสุจิ) ขยับตัวช้าลง ทำให้อสุจิเดินทางลำบากและหมดแรงไปในที่สุด</p>
+                        </div>
                     </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">3. มดลูกไม่พร้อมรับแขก</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        ทำให้ผนังมดลูกบางตัวลง เหมือนดินที่แห้งแล้งไม่ร่วนซุย ต่อให้บังเอิญมีตัวอ่อนหลุดมา <strong>ก็ไม่สามารถฝังตัวเพื่อเติบโตได้</strong>
-                    </p>
                 </div>
-                <!-- 4 -->
-                <div class="bg-slate-50 border border-slate-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-primary text-xl sm:text-2xl mb-4 sm:mb-6">
-                        <i class="fa-solid fa-water"></i>
+            </section>
+
+            <!-- Expanded Comparison Table -->
+            <section class="py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-slate-900/90"></div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="mb-8 lg:mb-12">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">เทียบให้ชัด! ครบทุกวิธีคุมกำเนิดยอดฮิต</h2>
+                        <div class="w-16 h-1 bg-primary rounded-full mb-4"></div>
+                        <p class="text-sm text-slate-300">ตารางเทียบข้อแตกต่างระหว่าง ยาฝัง, ยาคุมแบบกิน, ยาฉีด และห่วงอนามัย</p>
                     </div>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">4. ทางเดินขรุขระ</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        ทำให้ท่อนำไข่ (ถนนที่อสุจิต้องว่ายไปหาไข่) ขยับตัวช้าลง ทำให้อสุจิเดินทางลำบากและหมดแรงไปในที่สุด
-                    </p>
+
+                    <div class="md:hidden text-sky-400 text-xs mb-3 flex items-center gap-2 bg-slate-800/80 p-2 rounded-lg inline-block w-max">
+                        <i class="fa-solid fa-arrows-left-right animate-pulse"></i> ปัดซ้าย-ขวา เพื่อดูข้อมูลแบบเต็ม
+                    </div>
+
+                    <div class="overflow-x-auto pb-4 -mx-4 sm:mx-0 px-4 sm:px-0 scroll-smooth">
+                        <table class="w-full text-left border-collapse min-w-[900px] bg-slate-800/80 rounded-2xl backdrop-blur-sm">
+                            <thead>
+                                <tr class="bg-slate-950/50">
+                                    <th class="p-4 lg:p-5 border-b border-slate-700 font-bold w-1/5 rounded-tl-xl text-white">จุดเด่น / วิธีคุม</th>
+                                    <th class="p-4 lg:p-5 border-b border-slate-700 font-bold text-sky-400 w-1/5"><i class="fa-solid fa-capsules mr-2"></i>ยาฝัง (Implant)</th>
+                                    <th class="p-4 lg:p-5 border-b border-slate-700 font-bold text-indigo-400 w-1/5"><i class="fa-solid fa-ring mr-2"></i>ห่วงอนามัย (IUD)</th>
+                                    <th class="p-4 lg:p-5 border-b border-slate-700 font-bold text-emerald-400 w-1/5"><i class="fa-solid fa-syringe mr-2"></i>ยาฉีด (Injection)</th>
+                                    <th class="p-4 lg:p-5 border-b border-slate-700 font-bold text-slate-400 w-1/5 rounded-tr-xl"><i class="fa-solid fa-tablets mr-2"></i>ยาเม็ด (Pill)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-300 text-xs sm:text-sm">
+                                <tr class="hover:bg-slate-700/50 transition-colors">
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 font-medium text-white">ระยะเวลาคุม</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 text-sky-200">3 หรือ 5 ปี</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">3, 5, 10 ปี (แล้วแต่รุ่น)</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">1 หรือ 3 เดือน</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 text-slate-400">ต้องกินทุกวัน</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition-colors">
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 font-medium text-white">โอกาสตั้งครรภ์</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 text-emerald-400 font-bold">0.05% (ต่ำสุด)</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 text-emerald-400 font-bold">0.2 - 0.8%</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 text-amber-400">6% (ถ้าลืมไปฉีด)</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 text-rose-400">9% (ถ้าลืมกิน)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition-colors">
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 font-medium text-white">การรบกวนชีวิตประจำวัน</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ไม่ต้องทำอะไรเลย ฝังแล้วลืมได้</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ต้องคลำเชือกห่วงเดือนละครั้ง</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ต้องหาเวลาไปคลินิกทุก 3 เดือน</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ต้องตั้งนาฬิกาปลุกกินทุกวัน</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition-colors">
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50 font-medium text-white">อาการเจ็บ/ตำแหน่ง</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ฝังที่ใต้ท้องแขน (ฉีดยาชา)</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ใส่ผ่านช่องคลอด (อาจปวดหน่วง)</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ฉีดเข้ากล้ามเนื้อสะโพก/แขน</td>
+                                    <td class="p-4 lg:p-5 border-b border-slate-700/50">ไม่เจ็บ (กลืนยา)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition-colors">
+                                    <td class="p-4 lg:p-5 font-medium text-white rounded-bl-xl">ประจำเดือน</td>
+                                    <td class="p-4 lg:p-5 text-slate-300">มากะปริบกะปรอยช่วงแรก แล้วมักจะหายไปเลย</td>
+                                    <td class="p-4 lg:p-5 text-slate-300">แบบทองแดง: เมนส์มาปกติแต่อาจเยอะขึ้น<br>แบบฮอร์โมน: เมนส์น้อยลง</td>
+                                    <td class="p-4 lg:p-5 text-slate-300">มักจะหายไปเลย</td>
+                                    <td class="p-4 lg:p-5 text-slate-400 rounded-br-xl">มาปกติ ตรงเวลาทุกเดือน</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Procedure Section -->
-    <section id="procedure" class="py-16 lg:py-24 bg-slate-50 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">ขั้นตอนการฝังยา (ง่ายๆ ไม่น่ากลัว)</h2>
-                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4 lg:mb-6"></div>
-                <p class="text-sm sm:text-base text-slate-600">รวดเร็ว ปลอดภัย ใช้เวลาในห้องตรวจรวมๆ แค่ 10-15 นาที เสร็จแล้วกลับบ้านได้เลย</p>
-            </div>
 
-            <!-- แทรกรูปภาพบรรยากาศห้องตรวจเพื่อคลายความกังวล -->
-            <div class="mb-12 lg:mb-16">
-                <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1200&auto=format&fit=crop" class="w-full h-48 lg:h-[350px] object-cover rounded-3xl shadow-sm border border-slate-200" alt="บรรยากาศคลินิกแพทย์" loading="lazy">
-            </div>
-
-            <div class="flex flex-col lg:flex-row gap-6 relative">
-                <div class="hidden lg:block absolute top-[2.5rem] left-[10%] right-[10%] h-[2px] bg-slate-200 z-0"></div>
-
-                <!-- Step 1 -->
-                <div class="flex-1 relative z-10 text-center group">
-                    <div class="w-16 h-16 mx-auto bg-white border-4 border-sky-100 rounded-full flex items-center justify-center text-sky-500 font-bold text-xl mb-4 shadow-sm group-hover:border-sky-300 group-hover:bg-sky-50 transition-colors">1</div>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 h-full">
-                        <h4 class="font-bold text-slate-900 mb-2">ปรึกษาคุณหมอ</h4>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">ซักประวัติ ตรวจเช็กสุขภาพ และแนะนำให้มาฝังในช่วงที่มีเมนส์ 1-5 วันแรก จะได้มั่นใจว่าไม่ได้ท้องอยู่</p>
+        <!-- ========================================== -->
+        <!-- PAGE 3: PROCEDURE & CARE -->
+        <!-- ========================================== -->
+        <div id="page-procedure" class="page-section hidden">
+            
+            <!-- Preparation (NEW) -->
+            <section class="py-12 bg-indigo-50 border-b border-indigo-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-indigo-900 mb-2">เตรียมตัวก่อนไปฝังยา (Checklist)</h2>
+                        <p class="text-sm text-indigo-700">เตรียมตัวให้พร้อม จะได้ชิลๆ ไม่หน้ามืดตอนทำครับ</p>
+                    </div>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-xl flex items-start gap-4 shadow-sm border border-white">
+                            <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center shrink-0"><i class="fa-solid fa-utensils"></i></div>
+                            <div><h4 class="font-bold text-slate-800 text-sm mb-1">กินข้าวให้อิ่ม</h4><p class="text-xs text-slate-600">ไม่ต้องงดน้ำงดอาหาร ทานข้าวให้อิ่ม ป้องกันอาการหน้ามืดวิงเวียนจากความตื่นเต้นครับ</p></div>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl flex items-start gap-4 shadow-sm border border-white">
+                            <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center shrink-0"><i class="fa-solid fa-shirt"></i></div>
+                            <div><h4 class="font-bold text-slate-800 text-sm mb-1">ใส่เสื้อแขนสั้นหลวมๆ</h4><p class="text-xs text-slate-600">หมอจะต้องทำหัตถการบริเวณท้องแขน เสื้อแขนกว้างจะช่วยให้ทำง่าย และตอนกลับแผลจะได้ไม่ถูกรัด</p></div>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl flex items-start gap-4 shadow-sm border border-white">
+                            <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center shrink-0"><i class="fa-solid fa-calendar-check"></i></div>
+                            <div><h4 class="font-bold text-slate-800 text-sm mb-1">ไปช่วงมีประจำเดือน</h4><p class="text-xs text-slate-600">แนะนำให้ไปช่วงมีประจำเดือนวันที่ 1-5 เพื่อให้ชัวร์ว่าไม่ได้ตั้งครรภ์ และยาจะออกฤทธิ์คุมได้ทันที</p></div>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Step 2 -->
-                <div class="flex-1 relative z-10 text-center group">
-                    <div class="w-16 h-16 mx-auto bg-white border-4 border-indigo-100 rounded-full flex items-center justify-center text-indigo-500 font-bold text-xl mb-4 shadow-sm group-hover:border-indigo-300 group-hover:bg-indigo-50 transition-colors">2</div>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 h-full">
-                        <h4 class="font-bold text-slate-900 mb-2">เช็ดแขน & ฉีดยาชา</h4>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">พยาบาลเช็ดทำความสะอาดท้องแขน หมอจะฉีดยาชาเข็มเล็กๆ (เจ็บจี๊ดเดียวเหมือนมดกัด) เพื่อไม่ให้เจ็บตอนฝัง</p>
+            <!-- Procedure Section -->
+            <section class="py-12 lg:py-20 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">ขั้นตอนการฝัง (ง่ายๆ แค่ 15 นาที)</h2>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
+                        <p class="text-sm sm:text-base text-slate-600">ใช้เวลาในห้องตรวจแป๊บเดียว เสร็จแล้วเดินกลับบ้านได้เลยครับ</p>
+                    </div>
+
+                    <div class="mb-12 relative rounded-3xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1200&auto=format&fit=crop" class="w-full h-48 lg:h-[350px] object-cover shadow-sm" alt="บรรยากาศคลินิกแพทย์">
+                        <div class="absolute bottom-4 left-4 lg:bottom-8 lg:left-8 z-20 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+                            <p class="font-bold text-slate-800 text-sm lg:text-base"><i class="fa-solid fa-hospital text-primary mr-2"></i>บรรยากาศห้องตรวจสบายๆ ไม่น่ากลัว</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                        <!-- Step 1-4 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-slate-100 text-center relative z-10">
+                            <div class="w-14 h-14 mx-auto bg-sky-50 text-sky-500 rounded-full flex items-center justify-center font-bold text-2xl mb-5 shadow-inner">1</div>
+                            <h4 class="font-bold text-slate-900 mb-2 text-lg">ปรึกษาและซักประวัติ</h4>
+                            <p class="text-sm text-slate-600">คุณหมอซักประวัติ ตรวจเช็กสุขภาพเบื้องต้น และให้เซ็นเอกสารยินยอมรับการทำหัตถการ</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-slate-100 text-center relative z-10">
+                            <div class="w-14 h-14 mx-auto bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center font-bold text-2xl mb-5 shadow-inner">2</div>
+                            <h4 class="font-bold text-slate-900 mb-2 text-lg">ทำความสะอาด & ฉีดยาชา</h4>
+                            <p class="text-sm text-slate-600">นอนหงาย พับแขน พยาบาลทาเบตาดีนทำความสะอาด หมอฉีดยาชาเข็มเล็ก (เจ็บจี๊ดเดียวคล้ายมดกัด)</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-slate-100 text-center relative z-10">
+                            <div class="w-14 h-14 mx-auto bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center font-bold text-2xl mb-5 shadow-inner">3</div>
+                            <h4 class="font-bold text-slate-900 mb-2 text-lg">สอดหลอดยา</h4>
+                            <p class="text-sm text-slate-600">พอยาชาออกฤทธิ์ (ไม่เจ็บแล้ว) หมอจะใช้อุปกรณ์เฉพาะดันหลอดยาเข้าไปใต้ผิวหนังชั้นตื้น ใช้เวลาแค่ 1 นาที</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all border border-slate-100 text-center relative z-10">
+                            <div class="w-14 h-14 mx-auto bg-rose-50 text-rose-500 rounded-full flex items-center justify-center font-bold text-2xl mb-5 shadow-inner">4</div>
+                            <h4 class="font-bold text-slate-900 mb-2 text-lg">ปิดแผล (ไม่ต้องเย็บ)</h4>
+                            <p class="text-sm text-slate-600">แผลเป็นจุดเล็กๆ ไม่ต้องเย็บ ปิดพลาสเตอร์กันน้ำและพันผ้ายืด (Coban) ทับไว้กันบวม เสร็จเรียบร้อย!</p>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Step 3 -->
-                <div class="flex-1 relative z-10 text-center group">
-                    <div class="w-16 h-16 mx-auto bg-white border-4 border-emerald-100 rounded-full flex items-center justify-center text-emerald-500 font-bold text-xl mb-4 shadow-sm group-hover:border-emerald-300 group-hover:bg-emerald-50 transition-colors">3</div>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 h-full">
-                        <h4 class="font-bold text-slate-900 mb-2">สอดหลอดยา</h4>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">พอยาชาออกฤทธิ์ หมอจะใช้อุปกรณ์สอดหลอดยาเข้าไปใต้ผิวหนังตื้นๆ ตอนนี้จะไม่เจ็บเลย ใช้เวลา 1-2 นาที</p>
+            <!-- Removal Procedure (NEW) -->
+            <section class="py-12 bg-slate-900 text-white border-y border-slate-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/3 text-center md:text-left">
+                        <h2 class="text-2xl font-bold text-white mb-2">แล้วตอนถอดออกล่ะ?</h2>
+                        <div class="w-16 h-1 bg-primary mx-auto md:mx-0 rounded-full mb-4"></div>
+                        <p class="text-sm text-slate-400">หลายคนกลัวตอนเอาออก ลองดูขั้นตอนครับ ไม่น่ากลัวอย่างที่คิด</p>
+                    </div>
+                    <div class="md:w-2/3 grid sm:grid-cols-3 gap-4">
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div class="text-sky-400 font-bold mb-1">ขั้นที่ 1: คลำ & ชา</div>
+                            <p class="text-xs text-slate-300">หมอจะคลำหาปลายหลอดยาที่แขน แล้วฉีดยาชาบริเวณนั้น</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div class="text-sky-400 font-bold mb-1">ขั้นที่ 2: กรีดแผลจิ๋ว</div>
+                            <p class="text-xs text-slate-300">ใช้มีดกรีดผิวหนังตื้นๆ ยาวแค่ 2-3 มิลลิเมตร (เล็กมาก)</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div class="text-sky-400 font-bold mb-1">ขั้นที่ 3: ดึงออก</div>
+                            <p class="text-xs text-slate-300">ใช้คีมเล็กๆ จับปลายหลอดแล้วดึงออกมา ปิดพลาสเตอร์ จบปิ๊ง!</p>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Step 4 -->
-                <div class="flex-1 relative z-10 text-center group">
-                    <div class="w-16 h-16 mx-auto bg-white border-4 border-rose-100 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mb-4 shadow-sm group-hover:border-rose-300 group-hover:bg-rose-50 transition-colors">4</div>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 h-full">
-                        <h4 class="font-bold text-slate-900 mb-2">ปิดพลาสเตอร์ (ไม่ต้องเย็บ!)</h4>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">แผลเล็กนิดเดียว ไม่ต้องเย็บเข็ม หมอจะปิดพลาสเตอร์กันน้ำและพันผ้ายืดทับไว้กันบวม เป็นอันเสร็จ!</p>
+            <!-- Timeline & Care -->
+            <section class="py-16 bg-white border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">อาการที่อาจจะเจอ และการดูแล</h2>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Symptoms Timeline -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-slate-800 mb-4"><i class="fa-solid fa-chart-line text-primary mr-2"></i>ไทม์ไลน์หลังฝัง (เรื่องปกติ)</h3>
+                            <div class="bg-sky-50 p-5 rounded-2xl border border-sky-100 flex gap-4 items-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-sky-500 font-bold shrink-0 shadow-sm">1 M</div>
+                                <div>
+                                    <span class="text-xs font-bold text-sky-500 block mb-1">เดือนแรก</span>
+                                    <p class="text-sm font-bold text-slate-900">แขนช้ำนิดๆ & เมนส์กะปริบกะปรอย</p>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-50 p-5 rounded-2xl border border-indigo-100 flex gap-4 items-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-indigo-500 font-bold shrink-0 shadow-sm">3 M</div>
+                                <div>
+                                    <span class="text-xs font-bold text-indigo-500 block mb-1">เดือนที่ 3-6</span>
+                                    <p class="text-sm font-bold text-slate-900">ประจำเดือนอาจจะหายไปเลย (ปกติ เลือดไม่ได้คั่งค้าง)</p>
+                                </div>
+                            </div>
+                            <div class="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 flex gap-4 items-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-emerald-500 font-bold shrink-0 shadow-sm">1 Y</div>
+                                <div>
+                                    <span class="text-xs font-bold text-emerald-500 block mb-1">1 ปี ขึ้นไป</span>
+                                    <p class="text-sm font-bold text-slate-900">ร่างกายชินแล้ว สบายตัว ไม่ปวดท้องเมนส์อีกต่อไป</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Do's and Don'ts -->
+                        <div class="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
+                            <h3 class="text-xl font-bold text-slate-800 mb-4"><i class="fa-solid fa-kit-medical text-rose-500 mr-2"></i>การดูแลแผล</h3>
+                            <ul class="space-y-4 text-sm text-slate-700">
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-ban text-rose-500 mt-1"></i> <div><strong>ห้ามให้แผลโดนน้ำเด็ดขาด 1-2 วันแรก</strong> (เวลาอาบน้ำให้เอาถุงพลาสติกหุ้มแขนรัดยางหลวมๆ)</div></li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> <div>ครบ 24 ชม. สามารถแกะผ้ายืด (ที่พันรัดแน่นๆ) ออกได้เลย ปล่อยพลาสเตอร์ใสไว้</div></li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-shower text-emerald-500 mt-1"></i> <div>พ้น 3-5 วัน แกะพลาสเตอร์กันน้ำออก และอาบน้ำถูสบู่ได้ตามปกติ</div></li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-dumbbell text-rose-500 mt-1"></i> <div><strong>งดยกของหนัก</strong> หิ้วของหนัก หรือเกร็งแขนแรงๆ 1 สัปดาห์แรก แผลอาจอักเสบ</div></li>
+                                <li class="flex items-start gap-3 bg-amber-50 p-3 rounded-lg shadow-sm border border-amber-200"><i class="fa-solid fa-triangle-exclamation text-amber-500 mt-1"></i> <div>ถ้าไม่ได้ฝังช่วงเมนส์มา 5 วันแรก <strong>สัปดาห์แรกต้องสวมถุงยางอนามัยป้องกัน</strong> ไปก่อน เพราะยายังออกฤทธิ์ไม่เต็มที่</div></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Contraindications -->
+            <section class="py-12 bg-rose-50 border-t border-rose-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col lg:flex-row gap-6 items-center">
+                        <div class="lg:w-1/3 text-center lg:text-left">
+                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-rose-500 text-3xl mx-auto lg:mx-0 mb-4 shadow-sm">
+                                <i class="fa-solid fa-user-slash"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2 text-rose-900">ใครที่ "ห้าม" ฝังยาคุม?</h3>
+                            <p class="text-sm text-rose-700">หากมีอาการเหล่านี้ หมอจะไม่ฝังให้เด็ดขาดครับ</p>
+                        </div>
+                        <div class="lg:w-2/3 w-full">
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-800">
+                                <li class="bg-white p-4 rounded-xl shadow-sm border border-rose-100 flex items-center gap-3"><i class="fa-solid fa-xmark text-rose-500 text-lg"></i> กำลังท้อง หรือสงสัยว่าอาจจะท้อง</li>
+                                <li class="bg-white p-4 rounded-xl shadow-sm border border-rose-100 flex items-center gap-3"><i class="fa-solid fa-xmark text-rose-500 text-lg"></i> เลือดออกช่องคลอดผิดปกติแบบหาสาเหตุไม่ได้</li>
+                                <li class="bg-white p-4 rounded-xl shadow-sm border border-rose-100 flex items-center gap-3"><i class="fa-solid fa-xmark text-rose-500 text-lg"></i> เป็นหรือเคยเป็นโรคมะเร็งเต้านม</li>
+                                <li class="bg-white p-4 rounded-xl shadow-sm border border-rose-100 flex items-center gap-3"><i class="fa-solid fa-xmark text-rose-500 text-lg"></i> เป็นโรคตับอักเสบรุนแรง หรือมีเนื้องอกที่ตับ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Comparison Table (Simplified) -->
-    <section id="comparison" class="py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden">
-        <!-- เพิ่ม Background แบบจางๆ ให้ดูมีมิติ -->
-        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-slate-900/90"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="mb-8 lg:mb-12">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">เทียบให้ชัด ยาฝัง vs ยาคุมรายเดือน</h2>
-                <div class="w-16 h-1 bg-primary rounded-full"></div>
-            </div>
 
-            <div class="md:hidden text-sky-400 text-xs mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-arrows-left-right animate-pulse"></i> ปัดซ้าย-ขวา เพื่อดูข้อมูล
-            </div>
+        <!-- ========================================== -->
+        <!-- PAGE 4: FAQ -->
+        <!-- ========================================== -->
+        <div id="page-faq" class="page-section hidden">
+            <!-- Myths vs Facts -->
+            <section class="py-16 bg-white border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">เคลียร์ชัด! ความเชื่อผิดๆ ที่เจอบ่อย</h2>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                    </div>
 
-            <div class="overflow-x-auto pb-4 -mx-4 sm:mx-0 px-4 sm:px-0">
-                <table class="w-full text-left border-collapse min-w-[700px] lg:min-w-[800px] bg-slate-800/80 rounded-2xl backdrop-blur-sm">
-                    <thead>
-                        <tr class="bg-slate-800">
-                            <th class="p-4 lg:p-5 border-b border-slate-700 font-bold w-1/4 rounded-tl-xl lg:rounded-tl-2xl">จุดเด่น</th>
-                            <th class="p-4 lg:p-5 border-b border-slate-700 font-bold text-sky-400 w-1/4">ยาฝังแบบ 1 หลอด</th>
-                            <th class="p-4 lg:p-5 border-b border-slate-700 font-bold text-indigo-400 w-1/4">ยาฝังแบบ 2 หลอด</th>
-                            <th class="p-4 lg:p-5 border-b border-slate-700 font-bold text-slate-400 w-1/4 rounded-tr-xl lg:rounded-tr-2xl">ยาคุมแบบเม็ด (กินทุกวัน)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-slate-300 text-xs sm:text-sm">
-                        <tr class="hover:bg-slate-700/50 transition-colors">
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50 font-medium text-white">ระยะเวลาคุม</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50">นาน 3 ปี</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50">นาน 5 ปี</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50 text-slate-400">เดือนต่อเดือน (ลืมกินคือจบ)</td>
-                        </tr>
-                        <tr class="hover:bg-slate-700/50 transition-colors">
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50 font-medium text-white">โอกาสหลุดท้อง</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50 text-emerald-400 font-bold">น้อยมากๆ (0.05%)</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50 text-emerald-400 font-bold">น้อยมากๆ (0.05%)</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50 text-rose-400">สูงถึง 9% (เพราะชอบลืมกิน)</td>
-                        </tr>
-                        <tr class="hover:bg-slate-700/50 transition-colors">
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50 font-medium text-white">แม่ให้นมลูกใช้ได้ไหม?</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50"><i class="fa-solid fa-check text-emerald-500 mr-2"></i>ปลอดภัย น้ำนมไม่หด</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50"><i class="fa-solid fa-check text-emerald-500 mr-2"></i>ปลอดภัย น้ำนมไม่หด</td>
-                            <td class="p-4 lg:p-5 border-b border-slate-700/50"><i class="fa-solid fa-xmark text-rose-500 mr-2"></i>ส่วนใหญ่ทำให้น้ำนมน้อยลง</td>
-                        </tr>
-                        <tr class="hover:bg-slate-700/50 transition-colors">
-                            <td class="p-4 lg:p-5 font-medium text-white rounded-bl-xl lg:rounded-bl-2xl">แผลที่แขน</td>
-                            <td class="p-4 lg:p-5 text-slate-300">รอยเข็ม 1 จุด (เล็กจี๊ดเดียว)</td>
-                            <td class="p-4 lg:p-5 text-slate-300">รอยเข็ม 1 จุด (เป็นรูปตัว V)</td>
-                            <td class="p-4 lg:p-5 text-slate-400 rounded-br-xl lg:rounded-br-2xl">ไม่มีแผล (แค่กลืนลงคอ)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5"><span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>ความเชื่อผิดๆ</span><p class="font-bold text-slate-900 mt-2 text-lg">"ฝังยาแล้ว เลือดจะตกค้าง กลายเป็นพังผืด มดลูกเน่า"</p></div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow"><span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>ความจริง</span><p class="text-slate-700 text-sm mt-2 leading-relaxed">ยาทำให้ผนังมดลูกบางลง จึงไม่มีเลือดสร้างขึ้นมาให้หลุดลอก มดลูกคุณสะอาดและปกติเหมือนคนทั่วไป ไม่มีการคั่งค้างใดๆ ทั้งสิ้นครับ</p></div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5"><span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>ความเชื่อผิดๆ</span><p class="font-bold text-slate-900 mt-2 text-lg">"ฝังยาแล้ว จะทำให้มีลูกยากตลอดไป หรือเป็นหมัน"</p></div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow"><span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>ความจริง</span><p class="text-slate-700 text-sm mt-2 leading-relaxed">แค่ไปถอดหลอดยาออก ร่างกายจะกลับมาทำงานปกติทันที สามารถตั้งครรภ์ได้เลยใน 1-2 เดือนถัดไป ฮอร์โมนตัวนี้ไม่สะสมในร่างกายครับ</p></div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5"><span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>ความเชื่อผิดๆ</span><p class="font-bold text-slate-900 mt-2 text-lg">"แฟนจะคลำเจอ แล้วจะรู้สึกแปลกๆ เวลาโดนแขน"</p></div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow"><span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>ความจริง</span><p class="text-slate-700 text-sm mt-2 leading-relaxed">ถ้าลูบหรือคลำตั้งใจหา จะเจอเป็นแท่งยืดหยุ่นใต้ผิวหนังครับ แต่การกอด แตะ หรือโดนแขนแบบปกติ จะไม่รู้สึกสะดุดและไม่เจ็บเลย ใช้ชีวิตได้ปกติ 100%</p></div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                            <div class="bg-rose-50 p-5"><span class="text-xs font-bold text-rose-500 uppercase tracking-wider"><i class="fa-solid fa-xmark mr-1"></i>ความเชื่อผิดๆ</span><p class="font-bold text-slate-900 mt-2 text-lg">"เดินผ่านเครื่องสแกนที่สนามบิน เครื่องจะร้องดัง"</p></div>
+                            <div class="bg-emerald-50 p-5 border-t border-white flex-grow"><span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-check mr-1"></i>ความจริง</span><p class="text-slate-700 text-sm mt-2 leading-relaxed">หลอดยาฝังทำจากโพลีเมอร์พลาสติกทางการแพทย์ (EVA) ไม่มีส่วนผสมของโลหะใดๆ ดังนั้นเดินผ่านเครื่องสแกน หรือทำ MRI ได้สบายมาก เครื่องไม่ร้องแน่นอนครับ</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Accordion -->
+            <section class="py-16 bg-slate-900 text-white flex-grow">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">คำถามฮิตที่พบบ่อย (FAQ)</h2>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- Q1 -->
+                        <div class="faq-item bg-slate-800 rounded-xl border border-slate-700">
+                            <button class="w-full p-4 sm:p-5 text-left flex justify-between items-center focus:outline-none">
+                                <span class="font-bold text-sm sm:text-base text-slate-100 pr-4">ตอนฝังยาหรือตอนเอาออก เจ็บมากไหมคะ?</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-chevron-down faq-icon transition-transform text-slate-300 text-sm"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-4 sm:px-5 bg-slate-800/50 rounded-b-xl">
+                                <div class="pb-4 text-slate-300 text-sm leading-relaxed border-t border-slate-700 pt-3">
+                                    จะเจ็บนิดเดียวตอนหมอจิ้มเข็มฉีดยาชาครับ คล้ายมดกัด พอชาแล้ว ตอนดันหลอดยาเข้าหรือดึงออก จะไม่เจ็บเลย แค่รู้สึกตึงๆ ที่แขนครับ
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Q2 -->
+                        <div class="faq-item bg-slate-800 rounded-xl border border-slate-700">
+                            <button class="w-full p-4 sm:p-5 text-left flex justify-between items-center focus:outline-none">
+                                <span class="font-bold text-sm sm:text-base text-slate-100 pr-4">ฝังแล้วจะอ้วนไหม สิวขึ้นหรือเปล่า?</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-chevron-down faq-icon transition-transform text-slate-300 text-sm"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-4 sm:px-5 bg-slate-800/50 rounded-b-xl">
+                                <div class="pb-4 text-slate-300 text-sm leading-relaxed border-t border-slate-700 pt-3">
+                                    ยาไม่ได้ทำให้อ้วนโดยตรงครับ แต่อาจทำให้ฮอร์โมนแกว่งและ "เจริญอาหาร" ขึ้นนิดหน่อย ถ้าระวังการกินและขยับตัวบ่อยๆ น้ำหนักก็จะไม่ขึ้น ส่วนเรื่องสิว เจอได้บ้างแต่น้อยกว่าการกินยาคุมแบบฮอร์โมนรวมครับ
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Q3 -->
+                        <div class="faq-item bg-slate-800 rounded-xl border border-slate-700">
+                            <button class="w-full p-4 sm:p-5 text-left flex justify-between items-center focus:outline-none">
+                                <span class="font-bold text-sm sm:text-base text-slate-100 pr-4">ดื่มแอลกอฮอล์ (เหล้า/เบียร์) ได้ไหม? ทำให้ยาเสื่อมไหม?</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-chevron-down faq-icon transition-transform text-slate-300 text-sm"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-4 sm:px-5 bg-slate-800/50 rounded-b-xl">
+                                <div class="pb-4 text-slate-300 text-sm leading-relaxed border-t border-slate-700 pt-3">
+                                    ดื่มได้ตามปกติเลยครับ! แอลกอฮอล์ไม่มีผลต่อประสิทธิภาพของยาฝังคุมกำเนิด แต่อาจจะต้องระวังเรื่องความมึนเมาแล้วเกิดอุบัติเหตุไปโดนแผลช่วงฝังมาแรกๆ ครับ
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Q4 -->
+                        <div class="faq-item bg-slate-800 rounded-xl border border-slate-700">
+                            <button class="w-full p-4 sm:p-5 text-left flex justify-between items-center focus:outline-none">
+                                <span class="font-bold text-sm sm:text-base text-slate-100 pr-4">ยกเวท หรือออกกำลังกายแขนหนักๆ ได้ไหม หลอดจะหักไหม?</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-chevron-down faq-icon transition-transform text-slate-300 text-sm"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-4 sm:px-5 bg-slate-800/50 rounded-b-xl">
+                                <div class="pb-4 text-slate-300 text-sm leading-relaxed border-t border-slate-700 pt-3">
+                                    หลอดยามีความยืดหยุ่นสูง โค้งงอได้ โอกาสหักน้อยมากๆ ครับ แต่แนะนำให้ <strong>งดยกเวทหรือใช้แขนข้างที่ฝังยกของหนักในช่วง 1-2 สัปดาห์แรก</strong> เพื่อรอให้แผลสมานตัวก่อน หลังจากนั้นสามารถออกกำลังกายและเล่นเวทได้เต็มที่ตามปกติครับ
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Q5 -->
+                        <div class="faq-item bg-slate-800 rounded-xl border border-slate-700">
+                            <button class="w-full p-4 sm:p-5 text-left flex justify-between items-center focus:outline-none">
+                                <span class="font-bold text-sm sm:text-base text-slate-100 pr-4">กินวิตามิน คอลลาเจน หรืออาหารเสริมได้ไหม?</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-chevron-down faq-icon transition-transform text-slate-300 text-sm"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-4 sm:px-5 bg-slate-800/50 rounded-b-xl">
+                                <div class="pb-4 text-slate-300 text-sm leading-relaxed border-t border-slate-700 pt-3">
+                                    วิตามินซี, คอลลาเจน, กลูต้า ฯลฯ สามารถทานได้ปกติ ไม่มีผลกับยาคุมครับ<br>
+                                    <strong class="text-rose-400">ข้อยกเว้น:</strong> ยาที่ทำให้ยาคุมเสื่อมฤทธิ์คือ ยารักษาวัณโรค (Rifampicin), ยากันชักบางชนิด, ยารักษา HIV, และสมุนไพรฝรั่งชื่อ เซนต์จอห์นเวิร์ต (St. John's Wort) ครับ
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Q6 -->
+                        <div class="faq-item bg-slate-800 rounded-xl border border-slate-700">
+                            <button class="w-full p-4 sm:p-5 text-left flex justify-between items-center focus:outline-none">
+                                <span class="font-bold text-sm sm:text-base text-slate-100 pr-4">ค่าใช้จ่ายประมาณเท่าไหร่คะ? สิทธิฝังฟรีมีอะไรบ้าง?</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-chevron-down faq-icon transition-transform text-slate-300 text-sm"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-4 sm:px-5 bg-slate-800/50 rounded-b-xl">
+                                <div class="pb-4 text-slate-300 text-sm leading-relaxed border-t border-slate-700 pt-3">
+                                    <strong>สิทธิฝังฟรี สปสช.:</strong> <br>1. ผู้หญิงอายุ 10-20 ปีบริบูรณ์ ทุกสิทธิการรักษาฝังฟรีที่รพ.รัฐ<br>2. หญิงอายุ 20 ปีขึ้นไปเฉพาะกรณีหลังยุติการตั้งครรภ์<br>
+                                    <strong>กรณีเสียเงินเอง:</strong><br>รพ.รัฐ ประมาณ 2,500 - 3,500 บาท<br>รพ.เอกชน / คลินิก ประมาณ 5,000 - 8,000 บาทครับ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Timeline of Side Effects (Simplified) -->
-    <section id="timeline" class="py-16 lg:py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">อาการที่อาจจะเจอ (ไม่ต้องตกใจ!)</h2>
-                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4 lg:mb-6"></div>
-                <p class="text-sm sm:text-base text-slate-600">เป็นเรื่องปกติที่ร่างกายกำลังทำความรู้จักกับยาตัวใหม่ครับ</p>
-            </div>
+    </main>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <!-- Month 1 -->
-                <div class="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-slate-50 rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-sky-500 text-xl sm:text-2xl mb-4 sm:mb-6">
-                        <i class="fa-solid fa-calendar-days"></i>
-                    </div>
-                    <span class="text-xs lg:text-sm font-bold text-sky-500 mb-1 block">ช่วงเดือนแรก</span>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">แขนช้ำนิดๆ & เมนส์มากะปริบกะปรอย</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        ตรงที่ฝังยาอาจจะช้ำเขียวๆ เหลืองๆ (เดี๋ยวก็หายเองใน 1-2 อาทิตย์) และอาจจะมีเลือดประจำเดือนหยดเปื้อนกางเกงในนิดๆ หน่อยๆ มาไม่ค่อยตรงวัน
-                    </p>
-                </div>
-
-                <!-- Month 3-6 -->
-                <div class="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-slate-50 rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-indigo-500 text-xl sm:text-2xl mb-4 sm:mb-6">
-                        <i class="fa-solid fa-moon"></i>
-                    </div>
-                    <span class="text-xs lg:text-sm font-bold text-indigo-500 mb-1 block">เดือนที่ 3 ถึง 6</span>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">ประจำเดือนอาจจะหายไปเลย</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        เลือดกะปริบกะปรอยจะน้อยลง บางคนประจำเดือนจะ <strong>"หายไปเลย"</strong> ซึ่งถือเป็นเรื่องปกตินะครับ เลือดไม่ได้คั่งค้าง แค่ผนังมดลูกมันไม่หนาตัว เลยไม่มีเลือดหลุดลอกออกมา
-                    </p>
-                </div>
-
-                <!-- Year 1+ -->
-                <div class="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 sm:col-span-2 lg:col-span-1">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-slate-50 rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-emerald-500 text-xl sm:text-2xl mb-4 sm:mb-6">
-                        <i class="fa-regular fa-face-smile"></i>
-                    </div>
-                    <span class="text-xs lg:text-sm font-bold text-emerald-500 mb-1 block">1 ปี เป็นต้นไป</span>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">ชินแล้ว สบายตัวสุดๆ</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        ร่างกายปรับตัวเข้ากับยาได้ 100% ใครที่เคยปวดท้องเมนส์หนักๆ อาการก็จะดีขึ้นมาก ใช้ชีวิตได้เต็มที่ เที่ยวได้ ออกกำลังกายได้ ไม่ต้องกังวลเรื่องท้องเลย
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Aftercare & Red Flags -->
-    <section id="aftercare" class="py-16 lg:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">การดูแลแขนหลังกลับบ้าน</h2>
-                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4 lg:mb-6"></div>
-                <p class="text-sm sm:text-base text-slate-600">ทำตามนี้ แผลหายไว ไม่ติดเชื้อแน่นอนครับ</p>
-            </div>
-
-            <!-- แทรกรูปภาพผู้หญิงสุขภาพดี เพื่อสื่อถึงการใช้ชีวิตตามปกติ -->
-            <div class="mb-8 rounded-[2rem] overflow-hidden shadow-sm h-48 lg:h-[300px] w-full relative">
-                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="ใช้ชีวิตอย่างมั่นใจ" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-r from-white/80 to-transparent flex items-center p-8 lg:p-12">
-                    <h3 class="text-2xl lg:text-4xl font-bold text-slate-900 max-w-sm leading-tight">ใช้ชีวิตได้เต็มที่ ไร้กังวล</h3>
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
-                <!-- Do's and Don'ts -->
-                <div class="bg-slate-50 border border-slate-200 rounded-[2rem] p-6 sm:p-8">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center text-sky-600 text-xl">
-                            <i class="fa-solid fa-clipboard-check"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900">สิ่งที่ควรทำ / ห้ามทำ</h3>
-                    </div>
-                    <ul class="space-y-4 text-sm sm:text-base text-slate-700">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-check text-emerald-500 mt-1 shrink-0"></i>
-                            <span><strong>ห้ามให้แผลโดนน้ำ</strong> 1-2 วันแรก (ถ้าอาบน้ำ ให้เอาถุงพลาสติกหุ้มแขนไว้)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-check text-emerald-500 mt-1 shrink-0"></i>
-                            <span>หลังครบ 24 ชั่วโมง ถ้าผ้ายืดที่หมอพันไว้มันรัดแน่นไป ก็แกะออกได้เลยครับ</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-check text-emerald-500 mt-1 shrink-0"></i>
-                            <span>พ้น 3-5 วันปุ๊บ แกะพลาสเตอร์กันน้ำออก แล้วอาบน้ำถูสบู่ได้ตามปกติ</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-xmark text-rose-500 mt-1 shrink-0"></i>
-                            <span><strong>งดยกของหนัก</strong> หรือเกร็งแขนแรงๆ ในช่วงอาทิตย์แรก เดี๋ยวแผลจะอักเสบเอา</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-xmark text-rose-500 mt-1 shrink-0"></i>
-                            <span>ถ้าคุณหมอไม่ได้ฝังยาในช่วงเมนส์มา 5 วันแรก <strong>อาทิตย์แรกต้องใช้ถุงยางไปก่อนนะ</strong> ยายังออกฤทธิ์ไม่เต็มที่</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Red Flags -->
-                <div class="bg-rose-50 border border-rose-100 rounded-[2rem] p-6 sm:p-8 flex flex-col justify-center">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center text-rose-600 text-xl">
-                            <i class="fa-solid fa-bell"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-rose-900">สัญญาณเตือน! รีบกลับไปหาหมอ</h3>
-                    </div>
-                    <p class="text-sm text-rose-700 mb-4">ถ้ามีอาการพวกนี้ ห้ามปล่อยทิ้งไว้และอย่าบีบแผลเล่นเด็ดขาด:</p>
-                    <ul class="space-y-4 text-sm sm:text-base text-rose-800">
-                        <li class="flex items-start gap-3 bg-white/60 p-3 rounded-xl">
-                            <i class="fa-solid fa-triangle-exclamation text-rose-500 mt-0.5 shrink-0"></i>
-                            <span>แผลบวมแดง ปวดมาก มีน้ำเหลืองหรือหนองไหลเยิ้ม</span>
-                        </li>
-                        <li class="flex items-start gap-3 bg-white/60 p-3 rounded-xl">
-                            <i class="fa-solid fa-triangle-exclamation text-rose-500 mt-0.5 shrink-0"></i>
-                            <span>คลำหาแท่งยาที่แขนไม่เจอ หรือปลายยาโผล่ทะลุผิวหนังออกมา</span>
-                        </li>
-                        <li class="flex items-start gap-3 bg-white/60 p-3 rounded-xl">
-                            <i class="fa-solid fa-triangle-exclamation text-rose-500 mt-0.5 shrink-0"></i>
-                            <span>เลือดออกช่องคลอดเยอะมาก (แบบที่ต้องเปลี่ยนผ้าอนามัยทุกชั่วโมง)</span>
-                        </li>
-                        <li class="flex items-start gap-3 bg-white/60 p-3 rounded-xl">
-                            <i class="fa-solid fa-triangle-exclamation text-rose-500 mt-0.5 shrink-0"></i>
-                            <span>ปวดท้องน้อยจี๊ดรุนแรงกะทันหัน (อาจเป็นสัญญาณท้องนอกมดลูก)</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contraindications (Warning section) -->
-    <section class="py-12 lg:py-16 bg-slate-900 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-800 border border-slate-700 rounded-2xl lg:rounded-[2rem] p-6 sm:p-8 lg:p-10 flex flex-col lg:flex-row gap-6 lg:gap-8 items-center">
-                <div class="lg:w-1/3 text-center lg:text-left">
-                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rose-500/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-rose-400 text-2xl sm:text-3xl mx-auto lg:mx-0 mb-3 sm:mb-4">
-                        <i class="fa-solid fa-user-slash"></i>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">ใครที่ "ห้าม" ฝังยาคุม?</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm">ถ้าตรงกับข้อใดข้อหนึ่งตามนี้ คุณหมอจะไม่ฝังให้เด็ดขาดครับ</p>
-                </div>
-                <div class="lg:w-2/3 w-full">
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-slate-300">
-                        <li class="bg-slate-900/50 p-3 sm:p-4 rounded-xl flex items-center gap-3">
-                            <i class="fa-solid fa-xmark text-rose-400 shrink-0"></i> กำลังท้องอยู่ หรือสงสัยว่าตัวเองอาจจะท้อง
-                        </li>
-                        <li class="bg-slate-900/50 p-3 sm:p-4 rounded-xl flex items-center gap-3">
-                            <i class="fa-solid fa-xmark text-rose-400 shrink-0"></i> มีเลือดออกผิดปกติทางช่องคลอดแบบหาสาเหตุไม่ได้
-                        </li>
-                        <li class="bg-slate-900/50 p-3 sm:p-4 rounded-xl flex items-center gap-3">
-                            <i class="fa-solid fa-xmark text-rose-400 shrink-0"></i> เคยเป็น หรือกำลังเป็นโรคมะเร็งเต้านม
-                        </li>
-                        <li class="bg-slate-900/50 p-3 sm:p-4 rounded-xl flex items-center gap-3">
-                            <i class="fa-solid fa-xmark text-rose-400 shrink-0"></i> เป็นโรคตับอักเสบรุนแรง หรือมีเนื้องอกที่ตับ
-                        </li>
-                        <li class="bg-slate-900/50 p-3 sm:p-4 rounded-xl flex items-center gap-3 sm:col-span-2">
-                            <i class="fa-solid fa-xmark text-rose-400 shrink-0"></i> กำลังป่วยเป็นโรคลิ่มเลือดอุดตันในเส้นเลือดดำ
-                        </li>
-                    </ul>
-
-                    <!-- ยาที่ทำให้ยาคุมเสื่อมฤทธิ์ -->
-                    <div class="mt-6 bg-slate-700/50 border border-slate-600 rounded-xl p-4 sm:p-5">
-                        <div class="flex items-center gap-2 mb-3">
-                            <i class="fa-solid fa-pills text-amber-400"></i>
-                            <h4 class="font-bold text-white text-sm">ยาที่ทำให้ยาฝัง "เสื่อมฤทธิ์" (ระวังท้อง!)</h4>
-                        </div>
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                            ยาบางชนิดอาจทำให้ฮอร์โมนคุมกำเนิดทำงานได้ลดลง เช่น <strong>ยารักษาวัณโรค, ยากันชักบางชนิด, ยารักษา HIV, และสมุนไพรเซนต์จอห์นเวิร์ต (St. John's Wort)</strong> แนะนำให้แจ้งคุณหมอเสมอว่าเรากำลังกินยาอะไรอยู่บ้างครับ
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- [ส่วนที่เพิ่มใหม่] 1. ความเชื่อผิดๆ vs ความจริง -->
-    <section class="py-16 bg-white border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">เคลียร์ชัด! ความเชื่อผิดๆ ที่เจอบ่อย</h2>
-                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6 lg:gap-10">
-                <!-- Myth 1 -->
-                <div class="flex flex-col h-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                    <div class="bg-rose-50 p-5 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-xmark text-rose-500 text-xl mt-1"></i>
-                        <div>
-                            <span class="text-xs font-bold text-rose-500 uppercase tracking-wider">ความเชื่อผิดๆ</span>
-                            <p class="font-bold text-slate-900 text-sm sm:text-base mt-1">"ฝังยาแล้ว เลือดจะตกค้าง กลายเป็นพังผืด มดลูกเน่า"</p>
-                        </div>
-                    </div>
-                    <div class="bg-emerald-50 p-5 flex-1 flex items-start gap-3 border-t border-white">
-                        <i class="fa-solid fa-circle-check text-emerald-500 text-xl mt-1"></i>
-                        <div>
-                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">ความจริง</span>
-                            <p class="text-slate-700 text-sm leading-relaxed mt-1">ยาทำให้ผนังมดลูกบางลงแต่แรก จึงไม่มีเลือดสร้างขึ้นมาให้หลุดลอก มดลูกคุณปกติและสะอาดดี ไม่มีการคั่งค้างใดๆ ครับ</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Myth 2 -->
-                <div class="flex flex-col h-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                    <div class="bg-rose-50 p-5 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-xmark text-rose-500 text-xl mt-1"></i>
-                        <div>
-                            <span class="text-xs font-bold text-rose-500 uppercase tracking-wider">ความเชื่อผิดๆ</span>
-                            <p class="font-bold text-slate-900 text-sm sm:text-base mt-1">"ฝังยาแล้ว จะทำให้มีลูกยากตลอดไป หรือเป็นหมัน"</p>
-                        </div>
-                    </div>
-                    <div class="bg-emerald-50 p-5 flex-1 flex items-start gap-3 border-t border-white">
-                        <i class="fa-solid fa-circle-check text-emerald-500 text-xl mt-1"></i>
-                        <div>
-                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">ความจริง</span>
-                            <p class="text-slate-700 text-sm leading-relaxed mt-1">แค่ไปถอดหลอดยาออก ร่างกายและรังไข่จะกลับมาทำงานตามปกติ สามารถตั้งครรภ์ได้เลยในเดือนถัดไป (ฮอร์โมนไม่สะสมในร่างกาย)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- [ส่วนที่เพิ่มใหม่] 2. รีวิวจากผู้ใช้จริง (Testimonials) -->
-    <section class="py-16 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">เสียงจากผู้ใช้จริง</h2>
-                <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
-                <p class="text-sm text-slate-600">ประสบการณ์ตรงจากสาวๆ ที่เคยฝังยาคุมกำเนิดมาแล้ว</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Review 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative">
-                    <div class="flex text-amber-400 mb-3 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"ตอนแรกกลัวเจ็บมาก แต่หมอมือเบาสุดๆ ฉีดยาชาจี๊ดเดียว หลังจากนั้นชิลเลยค่ะ ตอนนี้ฝังมา 2 ปีแล้ว สบายตัวมาก ไม่ต้องตั้งนาฬิกาปลุกกินยาคุมอีกเลย"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold">ม</div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-900">คุณมายด์, 24 ปี</p>
-                            <p class="text-xs text-slate-500">ฝังแบบ 3 ปี</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-slate-100 text-4xl -z-0"></i>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative">
-                    <div class="flex text-amber-400 mb-3 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"ช่วง 3 เดือนแรกเมนส์มากะปริบกะปรอยนิดหน่อย แอบรำคาญ แต่พอเข้าเดือนที่ 4 เมนส์ก็หายไปเลย รู้สึกโอเคมาก ไม่ปวดท้องเมนส์เหมือนแต่ก่อนแล้ว"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">พ</div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-900">คุณพลอย, 28 ปี</p>
-                            <p class="text-xs text-slate-500">ฝังแบบ 5 ปี</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-slate-100 text-4xl -z-0"></i>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative">
-                    <div class="flex text-amber-400 mb-3 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-600 text-sm italic mb-4 leading-relaxed">"เราใช้สิทธิ สปสช. สำหรับวัยรุ่นค่ะ ไปฝังที่โรงพยาบาลรัฐฟรีเลย ไม่มีค่าใช้จ่ายแฝง คุณหมอและพยาบาลให้คำแนะนำดีมาก แผลเล็กนิดเดียว"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">น</div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-900">คุณน้ำ, 19 ปี</p>
-                            <p class="text-xs text-slate-500">ใช้สิทธิฝังฟรีวัยรุ่น</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-slate-100 text-4xl -z-0"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ (Accordion) -->
-    <section id="faq" class="py-16 lg:py-20 bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 lg:mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4">คำถามฮิต (FAQ) ที่คนชอบสงสัย</h2>
-                <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
-            </div>
-
-            <div class="space-y-3 sm:space-y-4">
-                <!-- FAQ 1 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">ตอนฝังยาหรือตอนเอาออก เจ็บมากไหมคะ?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            จะเจ็บนิดเดียวตอนหมอจิ้มเข็มฉีดยาชาครับ อารมณ์คล้ายๆ มดกัด พอชาแล้ว ตอนดันหลอดยาเข้าไปหรือตอนดึงออก จะไม่รู้สึกเจ็บเลย แค่จะรู้สึกตึงๆ หน่วงๆ ที่แขนนิดหน่อยครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 2 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">เห็นบอกว่าฝังฟรี ใครได้สิทธิบ้างคะ?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            รัฐบาล (สปสช.) ให้สิทธิพิเศษครับ:<br>
-                            • <strong>น้องๆ ผู้หญิงอายุ 10 - 20 ปีบริบูรณ์:</strong> เดินเข้าโรงพยาบาลรัฐ (หรือเอกชนที่ร่วมโครงการ) ฝังฟรีเลยครับ ทุกสิทธิรักษา<br>
-                            • <strong>อายุ 20 ปีขึ้นไป:</strong> ถ้าเพิ่งแท้งบุตร หรือเพิ่งยุติการตั้งครรภ์ ก็ขอรับบริการฝังฟรีได้เหมือนกันครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 3 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">กลัวหลอดยามันไหลทะลุไปที่หัวใจ เป็นไปได้ไหม?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            <strong>เป็นไปไม่ได้เลยครับ สบายใจได้!</strong> หมอฝังไว้ใต้ผิวหนังชั้นตื้นๆ พอฝังเสร็จ ร่างกายเราจะสร้างพังผืดบางๆ มาล็อคหลอดยาไว้ให้มันอยู่กับที่ มันทะลุเข้าเส้นเลือดไปโผล่ที่หัวใจอย่างในข่าวลือไม่ได้แน่นอนครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">ถ้าประจำเดือนไม่มา เลือดเสียจะคั่งอยู่ข้างในไหม?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            <strong>ไม่มีเลือดเสียค้างครับ!</strong> ยามันไปสั่งให้ผนังมดลูกเรา "ไม่สร้างชั้นเลือด" ตั้งแต่แรก พอไม่มีเลือดสร้างขึ้นมา มันก็เลยไม่มีประจำเดือนหลุดออกมา มดลูกเราก็สะอาดปกติดี ข้อดีคือช่วยลดปัญหาเลือดจางได้ด้วยครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 5 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">ฝังแล้วน้ำหนักจะขึ้น จะอ้วนไหม?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            ตัวยา <strong>ไม่ได้ทำให้อ้วนโดยตรงครับ</strong> แต่อาจทำให้ฮอร์โมนแกว่ง รู้สึกอยากอาหารเก่งขึ้นนิดหน่อย หรือบวมน้ำบ้าง (น้ำหนักอาจจะขึ้นสัก 1-2 โลในบางคน) ถ้าเราคุมอาหารและขยับตัวบ่อยๆ น้ำหนักก็จะไม่ขึ้นครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 6 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">คลำหาหลอดยาที่แขนไม่เจอ ทำไงดี?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            ถ้าคลำไม่เจอ หรือรู้สึกเหมือนหลอดมันหัก <strong>ให้รีบไปหาหมอนะครับ</strong> อย่าพยายามบีบหรือแคะเอง หมอเค้ามีเครื่องอัลตราซาวด์ช่วยหา แป๊บเดียวก็เจอครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 7 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">ปล่อยทิ้งไว้เกินกำหนด (เช่น เกิน 3 ปี) อันตรายไหม?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            ตัวหลอดพลาสติกไม่ได้อันตรายหรือเน่าเปื่อยครับ แต่ <strong>ยาข้างในมันจะหมดฤทธิ์</strong> ทำให้มันป้องกันการท้องไม่ได้แล้ว แถมเพิ่มความเสี่ยงเรื่องท้องนอกมดลูกด้วย แนะนำให้ไปถอดหรือเปลี่ยนหลอดใหม่ตามนัดดีที่สุดครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 8 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">ฝังแล้วจะเป็นสิวเห่อ หรือฝ้าขึ้นไหม?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            บางคนอาจจะหน้ามันขึ้น หรือมีสิวขึ้นบ้าง (เจอประมาณ 10-15%) แต่เรื่องฝ้าเจอน้อยมากๆ เมื่อเทียบกับยาคุมแบบเม็ด ถ้าสิวขึ้นเยอะจริงๆ สามารถปรึกษาคุณหมอเพื่อรักษาสิวควบคู่ไปได้ครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 9 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">ถ้าไม่ได้สิทธิฝังฟรี ค่าใช้จ่ายประมาณเท่าไหร่คะ?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            คร่าวๆ นะครับ <strong>โรงพยาบาลรัฐบาล</strong> จะอยู่ที่ประมาณ 2,500 - 3,000 บาท ส่วน <strong>คลินิกหรือโรงพยาบาลเอกชน</strong> จะอยู่ที่ประมาณ 5,000 - 8,000+ บาท ขึ้นอยู่กับสถานที่ แนะนำให้โทรสอบถามโรงพยาบาลใกล้บ้านก่อนไปรับบริการครับ
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 10 -->
-                <div class="faq-item bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-700">
-                    <button class="w-full p-4 sm:p-6 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-sm sm:text-lg pr-4 text-slate-100 transition-colors">ตอนเอาออกทำยังไงคะ ต้องนอนโรงพยาบาลไหม?</span>
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300 text-slate-300 text-xs sm:text-sm"></i>
-                        </div>
-                    </button>
-                    <div class="faq-answer px-4 sm:px-6 bg-slate-800/50 rounded-b-xl sm:rounded-b-2xl">
-                        <div class="pb-5 sm:pb-6 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-700 pt-3 sm:pt-4">
-                            <strong>ไม่ต้องนอนโรงพยาบาลเลยครับ!</strong> หมอจะฉีดยาชา กรีดแผลเล็กจี๊ดเดียว (แค่ 2-3 มิลลิเมตร) แล้วใช้เครื่องมือคีบดึงหลอดเดิมออกมา ใช้เวลาแป๊บเดียวเสร็จ ปิดพลาสเตอร์กันน้ำแล้วกลับบ้านไปใช้ชีวิตต่อได้ทันทีครับ
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- [ส่วนที่เพิ่มใหม่] 3. Floating Action Button (เช็คสิทธิ) -->
+    <!-- Floating Action Button -->
     <a href="https://www.nhso.go.th/" target="_blank" rel="noopener noreferrer" 
-       class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-primaryDark text-white px-5 py-3 rounded-full shadow-lg shadow-sky-500/30 flex items-center gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-bounce-subtle border border-sky-400">
-        <i class="fa-solid fa-stethoscope text-xl"></i>
+       class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-primaryDark text-white px-4 py-3 rounded-full shadow-lg flex items-center gap-3 hover:-translate-y-1 transition-all border border-sky-400">
+        <i class="fa-solid fa-stethoscope"></i>
         <div class="flex flex-col">
             <span class="font-bold text-sm leading-none">เช็คสิทธิ สปสช.</span>
             <span class="text-[10px] text-sky-100">ฝังฟรี อายุไม่เกิน 20</span>
@@ -889,20 +702,86 @@
     </a>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 py-10 lg:py-12 border-t border-slate-800 text-slate-400">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center gap-2 mb-3 lg:mb-4">
-                <i class="fa-solid fa-capsules text-primary text-lg lg:text-xl"></i>
-                <span class="font-bold text-lg lg:text-xl text-white">สาระแน<span class="text-primary text-xs lg:text-sm ml-1">สุขภาพสตรี</span></span>
+    <footer class="bg-slate-950 py-8 border-t border-slate-800 text-slate-400 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-3">
+                <i class="fa-solid fa-capsules text-primary"></i>
+                <span class="font-bold text-white">สาระแน<span class="text-primary text-xs ml-1">สุขภาพสตรี</span></span>
             </div>
-            <p class="text-xs sm:text-sm mb-4 max-w-xl mx-auto px-4">เว็บไซต์นี้ทำขึ้นเพื่อให้ความรู้แบบเข้าใจง่าย ไม่สามารถใช้แทนคำวินิจฉัยของคุณหมอได้นะครับ</p>
-            <p class="text-[10px] sm:text-xs">&copy; 2026 สาระแน. All rights reserved.</p>
+            <p class="text-[10px] sm:text-xs">&copy; 2026 สาระแน. All rights reserved. (SPA Version)</p>
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
+    <!-- Interactive Scripts (SPA Router & UI) -->
     <script>
-        // Smooth Navbar
+        // 1. SPA Router Logic
+        const pages = ['home', 'mechanism', 'procedure', 'faq'];
+        
+        function navigate(targetId) {
+            // Update Title (Optional)
+            const titles = {
+                'home': 'หน้าแรก',
+                'mechanism': 'การทำงานของยา',
+                'procedure': 'ขั้นตอนและการดูแล',
+                'faq': 'คำถามที่พบบ่อย (FAQ)'
+            };
+            document.title = `${titles[targetId]} | สาระแนสุขภาพสตรี`;
+
+            // Hide all pages, show target page
+            pages.forEach(id => {
+                const el = document.getElementById(`page-${id}`);
+                if(el) {
+                    if(id === targetId) {
+                        el.classList.remove('hidden');
+                        el.classList.add('page-content'); // Add animation class
+                    } else {
+                        el.classList.add('hidden');
+                        el.classList.remove('page-content');
+                    }
+                }
+            });
+
+            // Update Navbar Active State
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const target = link.getAttribute('data-target');
+                if(target === targetId) {
+                    link.classList.add('text-primary');
+                    link.classList.remove('text-slate-600');
+                    if(link.classList.contains('mobile-link')) link.classList.add('bg-slate-50');
+                } else {
+                    link.classList.remove('text-primary');
+                    link.classList.add('text-slate-600');
+                    if(link.classList.contains('mobile-link')) link.classList.remove('bg-slate-50');
+                }
+            });
+
+            // Close mobile menu if open
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-btn').querySelector('i');
+            if(!menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Listen for hash changes in URL (Browser Back/Forward buttons)
+        window.addEventListener('hashchange', () => {
+            let hash = window.location.hash.substring(1);
+            if(!pages.includes(hash)) hash = 'home'; // default
+            navigate(hash);
+        });
+
+        // Initialize first load
+        window.addEventListener('DOMContentLoaded', () => {
+            let initialHash = window.location.hash.substring(1);
+            if(!pages.includes(initialHash)) initialHash = 'home';
+            navigate(initialHash);
+        });
+
+        // 2. UI Scripts (Navbar Scroll & FAQ)
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
@@ -916,11 +795,9 @@
             }
         });
 
-        // Mobile Menu
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         const icon = btn.querySelector('i');
-
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
             if(menu.classList.contains('hidden')) {
@@ -930,35 +807,19 @@
             }
         });
 
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                icon.classList.replace('fa-xmark', 'fa-bars');
-            });
-        });
-
-        // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             item.querySelector('button').addEventListener('click', () => {
-                // Close others
                 faqItems.forEach(other => { 
                     if (other !== item) {
                         other.classList.remove('active'); 
-                        other.querySelector('button span').classList.remove('text-primary', 'text-sky-400');
+                        other.querySelector('button span').classList.remove('text-sky-400');
                     }
                 });
-                
-                // Toggle current
                 item.classList.toggle('active');
-                
-                // Color change
                 const span = item.querySelector('button span');
-                if(item.classList.contains('active')) {
-                    span.classList.add('text-sky-400');
-                } else {
-                    span.classList.remove('text-sky-400');
-                }
+                if(item.classList.contains('active')) span.classList.add('text-sky-400');
+                else span.classList.remove('text-sky-400');
             });
         });
     </script>
